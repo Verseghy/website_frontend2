@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website-frontend2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: website-frontend2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: website-frontend2
+    spec:
+      containers:
+        - name: website-frontend2
+          image: verseghy/website_frontend2
+          ports:
+            - containerPort: 3000
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 300
+            failureThreshold: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+          resources:
+            limits:
+              memory: 128Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: website-frontend2
+spec:
+  selector:
+    app: website-frontend2
+  ports:
+    - name: website-frontend2
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: website-frontend2
+  annotations:
+    cert-manager.io/issuer-kind: ClusterIssuer
+    cert-manager.io/issuer-name: letsencrypt-prod
+spec:
+  host: beta.verseghy-gimnazium.net
+  port:
+    targetPort: 3000
+  to:
+    kind: Service
+    name: website-frontend2
