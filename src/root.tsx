@@ -1,16 +1,18 @@
 // @refresh reload
-import { Suspense } from "solid-js";
+import { lazy, Suspense } from "solid-js";
 import {
   Body,
   ErrorBoundary,
-  FileRoutes,
   Head,
   Html,
   Meta,
+  Route,
   Routes,
   Scripts,
   Title,
 } from "solid-start";
+
+const HomePage = lazy(() => import('./pages/Home'))
 
 export default function Root() {
   return (
@@ -24,7 +26,7 @@ export default function Root() {
         <Suspense>
           <ErrorBoundary>
             <Routes>
-              <FileRoutes />
+              <Route path="/" component={HomePage} />
             </Routes>
           </ErrorBoundary>
         </Suspense>
