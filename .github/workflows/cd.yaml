@@ -10,11 +10,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install oc
-        uses: redhat-actions/oc-installer@v1
-        with:
-          oc_version: '4.13'
-
       - name: Authenticate and set context
         uses: redhat-actions/oc-login@v1
         with:
