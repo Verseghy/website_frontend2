@@ -1,4 +1,4 @@
-import { VoidComponent } from "solid-js"
+import { VoidComponent } from 'solid-js'
 
 const HomePage: VoidComponent = () => {
   return <>asd</>

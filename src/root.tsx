@@ -1,16 +1,6 @@
 // @refresh reload
-import { lazy, Suspense } from "solid-js";
-import {
-  Body,
-  ErrorBoundary,
-  Head,
-  Html,
-  Meta,
-  Route,
-  Routes,
-  Scripts,
-  Title,
-} from "solid-start";
+import { lazy, Suspense } from 'solid-js'
+import { Body, ErrorBoundary, Head, Html, Meta, Route, Routes, Scripts, Title } from 'solid-start'
 
 const HomePage = lazy(() => import('./pages/Home'))
 
@@ -33,5 +23,5 @@ export default function Root() {
         <Scripts />
       </Body>
     </Html>
-  );
+  )
 }
