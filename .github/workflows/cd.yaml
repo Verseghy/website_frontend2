@@ -43,4 +43,4 @@ jobs:
       - name: Restart deployment
         shell: bash
         run: |
-          oc rollout restart deployment website_frontend2
+          oc rollout restart deployment website-frontend2
