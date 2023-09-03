@@ -21,7 +21,7 @@ jobs:
       - name: Buildah Build
         uses: redhat-actions/buildah-build@v2
         with:
-          image: docker.io/verseghy/website_frontend2
+          image: verseghy/website_frontend2
           tags: latest
           containerfiles: |
             ./Dockerfile
@@ -29,8 +29,8 @@ jobs:
       - name: Push To Dockerhub
         uses: redhat-actions/push-to-registry@v2
         with:
-          image: ${{ steps.buildah-build.outputs.image }}
-          tags: ${{ steps.buildah-build.outputs.tags }}
+          image: verseghy/website_frontend2
+          tags: latest
           registry: docker.io
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_AT }}
