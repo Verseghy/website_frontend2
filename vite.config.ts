@@ -3,4 +3,9 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [solid()],
+  css: {
+    modules: {
+      localsConvention: 'camelCase',
+    },
+  },
 })

@@ -8,10 +8,12 @@
   },
   "type": "module",
   "devDependencies": {
+    "@types/color": "^3.0.4",
     "@types/node": "^18.17.5",
     "esbuild": "^0.14.54",
     "postcss": "^8.4.28",
     "prettier": "3.0.3",
+    "sass": "^1.66.1",
     "solid-start-node": "^0.3.5",
     "typescript": "^4.9.5",
     "vite": "^4.4.9"
@@ -19,7 +21,9 @@
   "dependencies": {
     "@solidjs/meta": "^0.28.6",
     "@solidjs/router": "^0.8.3",
-    "scss": "^0.2.4",
+    "color": "^4.2.3",
+    "date-fns": "^2.30.0",
+    "normalize.css": "^8.0.1",
     "solid-js": "^1.7.11",
     "solid-start": "^0.3.5"
   },
