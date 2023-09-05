@@ -17,6 +17,7 @@ export type Author = {
 }
 
 export type Label = {
+  id: string
   name: string
   color: string
 }
