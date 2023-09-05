@@ -7,6 +7,7 @@ import Footer from '~/components/Footer'
 import styles from './root.module.scss'
 
 const HomePage = lazy(() => import('~/pages/Home'))
+const DebugPage = lazy(() => import('~/pages/Debug'))
 
 const Layout: ParentComponent = (props) => {
   return (
@@ -37,6 +38,7 @@ export default function Root() {
             <ErrorBoundary>
               <Routes>
                 <Route path="/" component={HomePage} />
+                <Route path="/_debug" component={DebugPage} />
               </Routes>
             </ErrorBoundary>
           </Suspense>
