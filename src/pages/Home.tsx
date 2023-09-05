@@ -1,5 +1,6 @@
 import { createGraphQLClient, gql } from '@solid-primitives/graphql'
 import { VoidComponent } from 'solid-js'
+import Banners from '~/components/Banners'
 import CardGrid from '~/components/CardGrid'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { Post } from '~/models/post'
@@ -54,6 +55,7 @@ const HomePage: VoidComponent = () => {
     <>
       <div>
         <CardGrid posts={data()?.posts.edges.map((e) => e.node)} />
+        <Banners />
       </div>
     </>
   )
