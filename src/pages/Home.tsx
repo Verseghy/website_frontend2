@@ -49,8 +49,6 @@ const HomePage: VoidComponent = () => {
   const newQuery = createGraphQLClient('https://backend2.verseghy-gimnazium.net/graphql')
   const [data] = newQuery<Response>(QUERY, { last: 3 })
 
-  console.log(data())
-
   return (
     <>
       <div>
