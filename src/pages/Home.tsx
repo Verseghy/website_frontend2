@@ -1,38 +1,61 @@
-import { VoidComponent } from 'solid-js'
+import { createGraphQLClient, gql } from '@solid-primitives/graphql'
+import { For, VoidComponent } from 'solid-js'
+import CardGrid from '~/components/CardGrid'
 import PostCard from '~/components/PostCard'
 import { Post } from '~/models/post'
 
-const post: Post = {
-  id: 369,
-  title: 'Tanévnyitó ünnepség, fotókkal',
-  description: 'Megnyitottuk a 2023/24-es tanévet.',
-  color: '#DE0C5E',
-  content: '',
-  author: {
-    name: 'Balogh Janka',
-    image: null,
-  },
-  date: '2023-09-01',
-  indexImage: 'https://backend.verseghy-gimnazium.net/storage/posts_images/index/ffb9a4c621907e33dbf9116e46c78176.jpg',
-  labels: [
-    {
-      name: 'iskola',
-      color: '#B5B3CE',
-    },
-    {
-      name: 'ünnepség',
-      color: '#e6eb14',
-    },
-  ],
-  images: [],
+const QUERY = gql`
+  query Posts($last: Int) {
+    posts(last: $last) {
+      edges {
+        node {
+          id
+          title
+          description
+          color
+          author {
+            name
+            image
+          }
+          date
+          indexImage
+          labels {
+            name
+            color
+          }
+        }
+      }
+      pageInfo {
+        endCursor
+        hasPreviousPage
+      }
+    }
+  }
+`
+
+type Response = {
+  posts: {
+    edges: {
+      node: Post
+    }[]
+    pageInfo: {
+      endCursor: string
+      hasPreviousPage: boolean
+    }
+  }
 }
 
 const HomePage: VoidComponent = () => {
+  const newQuery = createGraphQLClient('https://backend2.verseghy-gimnazium.net/graphql')
+  const [data] = newQuery<Response>(QUERY, { last: 3 })
+
+  console.log(data())
+
   return (
     <>
       asd
       <div style={{ width: '400px' }}>
-        <PostCard post={post} />
+        <CardGrid posts={data()?.posts.edges.map((e) => e.node)} />
       </div>
     </>
   )
