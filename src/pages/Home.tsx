@@ -1,7 +1,6 @@
 import { createGraphQLClient, gql } from '@solid-primitives/graphql'
-import { For, VoidComponent } from 'solid-js'
+import { VoidComponent } from 'solid-js'
 import CardGrid from '~/components/CardGrid'
-import PostCard from '~/components/PostCard'
 import { Post } from '~/models/post'
 
 const QUERY = gql`
@@ -20,6 +19,7 @@ const QUERY = gql`
           date
           indexImage
           labels {
+            id
             name
             color
           }
