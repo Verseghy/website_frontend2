@@ -52,9 +52,7 @@ const PostCard: VoidComponent<PostCardProps> = (props) => {
       </div>
       <A href={link()} class={styles.content} tabindex={-1}>
         <h2 class={styles.title}>{props.post.title}</h2>
-        <Show when={!!props.post.description}>
-          <p class={styles.description}>{props.post.description}</p>
-        </Show>
+        <p class={styles.description}>{props.post.description ?? ''}</p>
         <CardAuthor date={new Date(props.post.date)} author={props.post.author} />
       </A>
     </article>
