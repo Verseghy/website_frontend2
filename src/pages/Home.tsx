@@ -1,6 +1,7 @@
 import { createGraphQLClient, gql } from '@solid-primitives/graphql'
 import { VoidComponent } from 'solid-js'
 import CardGrid from '~/components/CardGrid'
+import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { Post } from '~/models/post'
 
 const QUERY = gql`
@@ -46,7 +47,7 @@ type Response = {
 }
 
 const HomePage: VoidComponent = () => {
-  const newQuery = createGraphQLClient('https://backend2.verseghy-gimnazium.net/graphql')
+  const newQuery = createGraphQLClient(GRAPHQL_BACKEND_URL)
   const [data] = newQuery<Response>(QUERY, { last: 3 })
 
   return (
