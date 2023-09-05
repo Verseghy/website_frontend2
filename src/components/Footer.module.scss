@@ -1,0 +1,114 @@
+footer {
+  margin-top: 15rem;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: min(var(--page-width), calc(100% - 2 * var(--page-padding)));
+  margin-inline: auto;
+}
+
+.top {
+  display: grid;
+  grid-gap: 6rem;
+  grid-template-columns: 1fr;
+  margin-bottom: 8rem;
+
+  @include md {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include lg {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .logo-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 3.2rem;
+
+    @include md {
+      grid-column: span 3;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include lg {
+      grid-column: span 1;
+      grid-template-columns: 1fr;
+    }
+
+    .kk-logo {
+      width: clamp(0px, 100%, 30rem);
+    }
+  }
+
+  .block {
+    color: var(--footer-text-color);
+    font-size: 1.4rem;
+
+    h4 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    span,
+    a {
+      display: block;
+      white-space: nowrap;
+      color: inherit;
+      line-height: 4rem;
+      border-radius: 0.3rem;
+    }
+
+    a {
+      &:focus-visible {
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem #000;
+      }
+
+      &.disabled {
+        cursor: not-allowed;
+        opacity: 0.2;
+
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
+
+    img {
+      height: 2rem;
+      vertical-align: middle;
+    }
+  }
+}
+
+.bottom {
+  background: var(--footer-bottom-background);
+  padding: 20px 0;
+  font-size: 1.2rem;
+  color: var(--footer-text-color);
+
+  .container {
+    align-items: center;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  .right {
+    font-size: 2rem;
+
+    a {
+      padding-inline: 0.5rem;
+      border-radius: 0.3rem;
+
+      &:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 0.2rem #000;
+      }
+    }
+  }
+}

@@ -1,10 +1,20 @@
 // @refresh reload
-import { lazy, Suspense } from 'solid-js'
+import { lazy, ParentComponent, Suspense } from 'solid-js'
 import { Body, ErrorBoundary, Head, Html, Meta, Route, Routes, Scripts, Title } from 'solid-start'
 import 'normalize.css'
 import '~/scss/global.scss'
+import Footer from '~/components/Footer'
 
-const HomePage = lazy(() => import('./pages/Home'))
+const HomePage = lazy(() => import('~/pages/Home'))
+
+const Layout: ParentComponent = (props) => {
+  return (
+    <div>
+      <main>{props.children}</main>
+      <Footer />
+    </div>
+  )
+}
 
 export default function Root() {
   return (
@@ -20,14 +30,16 @@ export default function Root() {
         />
       </Head>
       <Body>
-        <Suspense>
-          <ErrorBoundary>
-            <Routes>
-              <Route path="/" component={HomePage} />
-            </Routes>
-          </ErrorBoundary>
-        </Suspense>
-        <Scripts />
+        <Layout>
+          <Suspense>
+            <ErrorBoundary>
+              <Routes>
+                <Route path="/" component={HomePage} />
+              </Routes>
+            </ErrorBoundary>
+          </Suspense>
+          <Scripts />
+        </Layout>
       </Body>
     </Html>
   )
