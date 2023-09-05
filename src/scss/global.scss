@@ -13,3 +13,70 @@ body {
   font-size: 1.6rem;
   font-family: 'Roboto', sans-serif;
 }
+
+:root {
+  --color-background: #fff;
+  --color-primary: #005baa;
+
+  --color-gray50: #fafafa;
+  --color-gray100: #f5f5f5;
+  --color-gray200: #e5e5e5;
+  --color-gray300: #d4d4d4;
+  --color-gray400: #a3a3a3;
+  --color-gray500: #737373;
+  --color-gray600: #525252;
+  --color-gray700: #404040;
+  --color-gray800: #262626;
+  --color-gray900: #171717;
+
+  --text-color: #000;
+  --text-family: sans-serif;
+  --text-family-alt: 'Cabin', sans-serif;
+  --text-family-content: serif;
+  --text-family-content-heading: sans-serif;
+
+  --page-width: 1200px;
+  --page-padding: 20px;
+
+  --content-page-width: 70rem;
+  --content-page-width-wide: 100rem;
+
+  --logo-font: var(--text-family-alt);
+  --logo-font-weight: 700;
+  --logo-color: var(--text-color);
+  --logo-color-alt: var(--color-background);
+
+  --header-background: var(--color-background);
+  --header-shadow: 0 0 10px rgb(0 1 1 / 10%);
+  --header-menu-font: var(--text-family-alt);
+  --header-menu-hover-background: var(--color-gray100);
+  --header-menu-active-color: var(--color-primary);
+  --header-search-background: var(--color-gray100);
+  --header-submenu-hover-background: var(--color-gray200);
+
+  --drawer-background: var(--color-background);
+  --drawer-width: 26rem;
+  --drawer-shadow: 0 3px 5px 0 rgba(0, 1, 1, 0.1);
+
+  --footer-text-color: var(--color-gray600);
+  --footer-bottom-background: var(--color-gray100);
+
+  --card-saturation: 100%;
+  --card-lightness: 80%;
+
+  --blockquote-background: var(--color-gray100);
+  --blockquote-text-color: var(--color-gray600);
+  --blockquote-border-color: var(--color-gray600);
+  --table-background: var(--color-gray100);
+  --table-border-color: var(--color-gray200);
+  --hr-color: var(--color-gray200);
+
+  --information-menu-background: var(--color-gray100);
+  --information-menu-hover-background: var(--color-gray200);
+  --information-menu-active-color: var(--color-primary);
+  --information-menu-section-title-color: var(--color-gray500);
+  --information-menu-section-title-border: var(--color-gray300);
+
+  --post-date-color: var(--color-gray500);
+  --post-index-image-border-color: var(--color-gray100);
+}
