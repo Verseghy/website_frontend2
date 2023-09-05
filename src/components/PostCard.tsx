@@ -9,7 +9,7 @@ import styles from './PostCard.module.scss'
 
 const formatDate = (date: Date): string => {
   if (isSameYear(new Date(), date)) {
-    return format(date, 'MMM dd.', { locale: hu })
+    return format(date, 'MMM do', { locale: hu })
   }
   return format(date, 'PP', { locale: hu })
 }
