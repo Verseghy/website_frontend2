@@ -4,12 +4,14 @@ import { Body, ErrorBoundary, Head, Html, Meta, Route, Routes, Scripts, Title } 
 import 'normalize.css'
 import '~/scss/global.scss'
 import Footer from '~/components/Footer'
+import styles from './root.module.scss'
 
 const HomePage = lazy(() => import('~/pages/Home'))
 
 const Layout: ParentComponent = (props) => {
   return (
-    <div>
+    <div class={styles.layout}>
+      <header></header>
       <main>{props.children}</main>
       <Footer />
     </div>
