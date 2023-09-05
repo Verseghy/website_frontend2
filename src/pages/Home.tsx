@@ -53,8 +53,7 @@ const HomePage: VoidComponent = () => {
 
   return (
     <>
-      asd
-      <div style={{ width: '400px' }}>
+      <div>
         <CardGrid posts={data()?.posts.edges.map((e) => e.node)} />
       </div>
     </>
