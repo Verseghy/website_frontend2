@@ -57,7 +57,7 @@ const Footer: VoidComponent = () => {
           <div class={styles.right}>
             {/* TODO: facebook link */}
             <A href=".">
-              <FaBrandsFacebookF />
+              <FaBrandsFacebookF class={styles.icon} />
             </A>
           </div>
         </div>
