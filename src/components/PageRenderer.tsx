@@ -3,19 +3,21 @@ import { Show, VoidComponent } from 'solid-js'
 import { isServer } from 'solid-js/web'
 import styles from './PageRenderer.module.scss'
 
-let DOM: any
-if (isServer) {
-  DOM = (await import('jsdom')).JSDOM
-}
+/* let DOM: any */
+/* if (isServer) { */
+/*   DOM = (await import('jsdom')).JSDOM */
+/* } */
 
 type SanizerFn = (dirty: string) => string
 
 const getSanitizer = (): SanizerFn => {
   if (isServer) {
-    const window = new DOM('').window
-    const purify = DOMPurify(window)
-
-    return purify.sanitize
+    /* const window = new DOM('').window */
+    /* const window = new DOM.Window() */
+    /* const purify = DOMPurify(window) */
+    /* return purify.sanitize */
+    // TODO: fix server side html sanitization
+    return (x) => x
   } else {
     return DOMPurify.sanitize
   }
