@@ -1,23 +1,12 @@
 // @refresh reload
-import { lazy, ParentComponent, Suspense } from 'solid-js'
+import { lazy, Suspense } from 'solid-js'
 import { Body, ErrorBoundary, Head, Html, Meta, Route, Routes, Scripts, Title } from 'solid-start'
 import 'normalize.css'
 import '~/scss/global.scss'
-import Footer from '~/components/Footer'
-import styles from './root.module.scss'
+import Layout from '~/components/Layout'
 
 const HomePage = lazy(() => import('~/pages/Home'))
 const DebugPage = lazy(() => import('~/pages/Debug'))
-
-const Layout: ParentComponent = (props) => {
-  return (
-    <div class={styles.layout}>
-      <header></header>
-      <main>{props.children}</main>
-      <Footer />
-    </div>
-  )
-}
 
 export default function Root() {
   return (
