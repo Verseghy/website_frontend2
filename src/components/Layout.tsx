@@ -1,5 +1,5 @@
-import { ParentComponent } from "solid-js"
-import Footer from "./Footer"
+import { ParentComponent } from 'solid-js'
+import Footer from './Footer'
 import styles from './Layout.module.scss'
 
 const Layout: ParentComponent = (props) => {
