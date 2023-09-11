@@ -1,5 +1,6 @@
 import { VoidComponent } from 'solid-js'
 import PageRenderer from '~/components/PageRenderer'
+import Title from '~/components/Title'
 
 const CONTENT = `
   <h1>Heading one</h1>
@@ -182,6 +183,7 @@ const CONTENT = `
 const DebugPage: VoidComponent = () => {
   return (
     <div>
+      <Title>Debug</Title>
       <PageRenderer content={CONTENT} />
     </div>
   )
