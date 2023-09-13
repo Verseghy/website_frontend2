@@ -8,6 +8,7 @@ import Title from '~/components/Title'
 
 const HomePage = lazy(() => import('~/pages/Home'))
 const DebugPage = lazy(() => import('~/pages/Debug'))
+const PostPage = lazy(() => import('~/pages/Post'))
 
 export default function Root() {
   return (
@@ -28,6 +29,7 @@ export default function Root() {
             <ErrorBoundary>
               <Routes>
                 <Route path="/" component={HomePage} />
+                <Route path="/posts/:id" component={PostPage} />
                 <Route path="/_debug" component={DebugPage} />
               </Routes>
             </ErrorBoundary>

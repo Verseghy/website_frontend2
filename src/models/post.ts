@@ -12,6 +12,7 @@ export type Post = {
 }
 
 export type Author = {
+  id: string
   name: string
   image: string | null
 }
