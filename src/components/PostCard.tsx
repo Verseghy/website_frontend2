@@ -1,18 +1,10 @@
 import { A } from '@solidjs/router'
 import Color from 'color'
-import { isSameYear, format } from 'date-fns'
-import { hu } from 'date-fns/locale'
 import { For, Show, VoidComponent } from 'solid-js'
 import { Author, Post } from '~/models/post'
+import FormattedDate from './FormattedDate'
 import Label from './Label'
 import styles from './PostCard.module.scss'
-
-const formatDate = (date: Date): string => {
-  if (isSameYear(new Date(), date)) {
-    return format(date, 'MMM do', { locale: hu })
-  }
-  return format(date, 'PP', { locale: hu })
-}
 
 export type CardAuthorProps = {
   author: Author
@@ -20,16 +12,13 @@ export type CardAuthorProps = {
 }
 
 const CardAuthor: VoidComponent<CardAuthorProps> = (props) => {
-  const time = () => format(props.date, 'yyyy-MM-dd')
-  const formattedTime = () => formatDate(props.date)
-
   return (
     <div class={styles.bottom}>
       <Show when={!!props.author.image}>
         <img class={styles.authorImg} src={props.author.image!} alt={props.author.name} />
       </Show>
       <span class={styles.authorName}>{props.author.name}</span>
-      <time dateTime={time()}>{formattedTime()}</time>
+      <FormattedDate date={props.date} />
     </div>
   )
 }
