@@ -41,11 +41,7 @@ type Response = {
 
 const PostPage: VoidComponent = () => {
   // TODO: probably we can make this a global and reuse it everywhere
-  const newQuery = createGraphQLClient(GRAPHQL_BACKEND_URL, {
-    fetcher: (...a) => {
-      return fetch(...a)
-    },
-  })
+  const newQuery = createGraphQLClient(GRAPHQL_BACKEND_URL)
   const navigate = useNavigate()
 
   const params = useParams<{ id: string }>()

@@ -1,16 +1,30 @@
 // @refresh reload
 import { lazy, Suspense } from 'solid-js'
-import { Body, ErrorBoundary, Head, Html, Meta, Route, Routes, Scripts } from 'solid-start'
+import { Body, ErrorBoundary, Head, Html, Meta, Scripts, useRoutes } from 'solid-start'
 import 'normalize.css'
 import '~/scss/global.scss'
 import Layout from '~/components/Layout'
 import Title from '~/components/Title'
+import { RouteDefinition } from '@solidjs/router'
 
-const HomePage = lazy(() => import('~/pages/Home'))
-const DebugPage = lazy(() => import('~/pages/Debug'))
-const PostPage = lazy(() => import('~/pages/Post'))
+const ROUTES: RouteDefinition[] = [
+  {
+    path: '/posts/:id',
+    component: lazy(() => import('~/pages/Post')),
+  },
+  {
+    path: '/_debug',
+    component: lazy(() => import('~/pages/Debug')),
+  },
+  {
+    path: '/',
+    component: lazy(() => import('~/pages/Home')),
+  },
+]
 
 export default function Root() {
+  const Routes = useRoutes(ROUTES)
+
   return (
     <Html lang="en">
       <Head>
@@ -27,11 +41,7 @@ export default function Root() {
         <Layout>
           <Suspense>
             <ErrorBoundary>
-              <Routes>
-                <Route path="/" component={HomePage} />
-                <Route path="/posts/:id" component={PostPage} />
-                <Route path="/_debug" component={DebugPage} />
-              </Routes>
+              <Routes />
             </ErrorBoundary>
           </Suspense>
           <Scripts />
