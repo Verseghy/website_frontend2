@@ -4,14 +4,20 @@
     "dev": "solid-start dev",
     "build": "solid-start build",
     "start": "solid-start start",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "lint": "eslint --ext .tsx,.ts,.json,.js,.jsx ."
   },
   "type": "module",
   "devDependencies": {
     "@types/color": "^3.0.4",
     "@types/dompurify": "^3.0.2",
     "@types/node": "^18.17.5",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
     "esbuild": "^0.14.54",
+    "eslint": "^8.49.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-solid": "^0.13.0",
     "postcss": "^8.4.28",
     "prettier": "3.0.3",
     "sass": "^1.66.1",

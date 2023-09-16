@@ -38,6 +38,7 @@ const PageRenderer: VoidComponent<PageRendererProps> = (props) => {
       <Show when={!!props.title}>
         <h1 class={styles.title}>{props.title}</h1>
       </Show>
+      {/* eslint-disable-next-line solid/no-innerhtml */}
       <div innerHTML={cleanHTML()} />
     </div>
   )
