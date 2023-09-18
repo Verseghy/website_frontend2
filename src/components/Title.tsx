@@ -5,12 +5,12 @@ import { Title } from 'solid-start'
 /*   children?: string */
 /* } */
 
-const title = 'Verseghy Ferenc Gimnázium'
+const BASE_TITLE = 'Verseghy Ferenc Gimnázium'
 
 const TitleComp: Component<JSX.HTMLAttributes<HTMLTitleElement>> = (props) => {
   const fullTitle = () => {
-    if (!props.children) return title
-    return `${props.children} - ${title}`
+    if (!props.children) return BASE_TITLE
+    return `${props.children} - ${BASE_TITLE}`
   }
 
   return <Title>{fullTitle()}</Title>
