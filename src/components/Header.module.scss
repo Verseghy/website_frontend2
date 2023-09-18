@@ -1,0 +1,298 @@
+header {
+  background: var(--header-background);
+  box-shadow: var(--header-shadow);
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 10;
+}
+
+nav {
+  height: 5.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(var(--page-width), calc(100% - 2 * var(--page-padding)));
+  margin-inline: auto;
+  position: relative;
+
+  @include lg {
+    height: 6.4rem;
+  }
+}
+
+.drawer {
+  position: fixed;
+  inset: 0 0 0 auto;
+  z-index: 10;
+  width: var(--drawer-width);
+  background: var(--drawer-background);
+  box-shadow: var(--drawer-shadow);
+  transform: translate3d(var(--drawer-width), 0, 0);
+  transition: transform 270ms cubic-bezier(0.4, 0, 1, 1);
+
+  @include lg {
+    display: flex;
+    box-shadow: none;
+    width: min-content;
+    position: static;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0ms;
+  }
+
+  &.open {
+    transform: translate3d(0, 0, 0);
+    transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .header {
+    height: 5.6rem;
+    border-bottom: 0.1rem inset #f3f3f3;
+
+    @include lg {
+      display: none;
+    }
+
+    button {
+      background: none;
+      width: 4.8rem;
+      height: 4.8rem;
+      margin: 0.4rem;
+      cursor: pointer;
+
+      &:focus-visible {
+        outline: 2px solid black;
+        border-radius: 0.3rem;
+      }
+    }
+  }
+
+  .main-menu {
+    gap: 0.6rem;
+    align-items: center;
+
+    @include lg {
+      display: flex;
+    }
+  }
+
+  form {
+    --height: 4.8rem;
+
+    @include lg {
+      --height: 4rem;
+    }
+
+    display: block;
+    height: var(--height);
+    background: var(--header-search-background);
+    border-radius: 0.3rem;
+    margin: 0.4rem;
+    margin-right: 0;
+
+    &:focus-within {
+      outline: 2px solid #000;
+    }
+
+    &.bottom {
+      display: none;
+
+      @include lg {
+        display: block;
+      }
+    }
+
+    @include lg {
+      width: 17.5rem;
+
+      &.top {
+        display: none;
+      }
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .icon {
+      --icon-size: 1.6rem;
+      min-width: var(--height);
+      height: var(--height);
+      padding: calc((var(--height) - var(--icon-size)) / 2);
+    }
+
+    input {
+      height: 100%;
+      width: 100%;
+      background: none;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+li {
+  list-style: none;
+
+  a,
+  span {
+    font-family: var(--header-menu-font);
+    transition: background-color 100ms;
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    color: #000;
+    line-height: 4.8rem;
+    height: 4.8rem;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 0.3rem;
+    margin: 0.4rem;
+
+    @include lg {
+      line-height: 4rem;
+      height: 4rem;
+      margin: 0;
+    }
+
+    &.active,
+    &:hover {
+      background-color: var(--header-menu-hover-background);
+    }
+
+    &.active {
+      color: var(--header-menu-active-color);
+    }
+
+    &:focus-visible {
+      outline: 2px solid black;
+      border-radius: 0.3rem;
+    }
+
+    img {
+      display: block;
+      height: 2.5rem;
+      margin-block: auto;
+    }
+  }
+
+  .submenu {
+    position: relative;
+
+    .chevron {
+      position: absolute;
+      inset: calc((4.8rem - 16px) / 2) 0 0 auto;
+      width: 4.8rem;
+      pointer-events: none;
+      transition: transform 100ms;
+
+      @include lg {
+        display: none;
+      }
+    }
+  }
+
+  &.open,
+  &:focus-within {
+    span {
+      background: var(--header-menu-hover-background);
+
+      @include lg {
+        background: none;
+      }
+    }
+
+    .submenu .chevron {
+      transform: rotate3d(1, 0, 0, 180deg);
+    }
+
+    ul {
+      height: auto;
+      overflow: visible;
+    }
+  }
+
+  &:hover,
+  &:focus-within {
+    span {
+      @include lg {
+        border-bottom-left-radius: 0;
+        background: var(--header-menu-hover-background);
+      }
+    }
+
+    ul {
+      @include lg {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+
+  ul {
+    height: 0;
+    overflow: hidden;
+    background: var(--header-menu-hover-background);
+    border-radius: 0.3rem;
+    margin: 0.4rem;
+    transition: opacity 100ms;
+
+    @include lg {
+      height: auto;
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+      border-top-left-radius: 0;
+      margin: 0;
+    }
+
+    li a {
+      margin-inline: 0;
+
+      &:hover {
+        background: var(--header-submenu-hover-background);
+      }
+    }
+  }
+}
+
+.menu-open {
+  display: block;
+  width: 4.8rem;
+  height: 4.8rem;
+  cursor: pointer;
+  background: none;
+
+  &:focus-visible {
+    outline: 0.2rem solid #000;
+    border-radius: 0.3rem;
+  }
+
+  @include lg {
+    display: none;
+  }
+}
+
+.backdrop {
+  display: block;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px) grayscale(30%);
+  transition: opacity 300ms;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 9;
+
+  &.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  @include lg {
+    display: none;
+  }
+}

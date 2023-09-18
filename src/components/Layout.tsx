@@ -1,11 +1,12 @@
 import { ParentComponent } from 'solid-js'
 import Footer from './Footer'
+import Header from './Header'
 import styles from './Layout.module.scss'
 
 const Layout: ParentComponent = (props) => {
   return (
     <div class={styles.layout}>
-      <header></header>
+      <Header />
       <main class={styles.main}>{props.children}</main>
       <Footer />
     </div>
