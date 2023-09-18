@@ -20,6 +20,22 @@ const ROUTES: RouteDefinition[] = [
     path: '/',
     component: lazy(() => import('~/pages/Home')),
   },
+  {
+    path: '/*all',
+    component: () => {
+      const Error = lazy(() => import('~/pages/Error'))
+      return (
+        <Error
+          status={404}
+          title="Az oldal nem található"
+          link={{
+            name: 'Vissza a főoldalra',
+            href: '/',
+          }}
+        />
+      )
+    },
+  },
 ]
 
 export default function Root() {
