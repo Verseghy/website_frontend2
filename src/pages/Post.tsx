@@ -76,7 +76,7 @@ const PostPage: VoidComponent = () => {
   return (
     <>
       <Show when={!!data() && data()!.post !== null}>
-        <Title>{data()!.post.title}</Title>
+        <Title title={data()!.post.title} />
         <Meta property="og:title" content={data()!.post.title} />
         <Meta property="og:description" content={data()!.post.description} />
         <Meta property="og:image" content={data()!.post.indexImage} />

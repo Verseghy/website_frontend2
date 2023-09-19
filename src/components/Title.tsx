@@ -1,5 +1,5 @@
-import { Component, JSX } from 'solid-js'
-import { Title } from 'solid-start'
+import { VoidComponent } from 'solid-js'
+import { Meta, Title as TitleMeta } from 'solid-start'
 
 /* export type TitleProps = { */
 /*   children?: string */
@@ -7,13 +7,27 @@ import { Title } from 'solid-start'
 
 const BASE_TITLE = 'Verseghy Ferenc Gimnázium'
 
-const TitleComp: Component<JSX.HTMLAttributes<HTMLTitleElement>> = (props) => {
-  const fullTitle = () => {
-    if (!props.children) return BASE_TITLE
-    return `${props.children} - ${BASE_TITLE}`
-  }
-
-  return <Title>{fullTitle()}</Title>
+export type TitleProps = {
+  title?: string
 }
 
-export default TitleComp
+const Title: VoidComponent<TitleProps> = (props) => {
+  const fullTitle = () => {
+    if (!props.title) return BASE_TITLE
+    return `${props.title} - ${BASE_TITLE}`
+  }
+
+  const metaTitle = () => {
+    if (!props.title) return BASE_TITLE
+    return props.title!
+  }
+
+  return (
+    <>
+      <TitleMeta>{fullTitle()}</TitleMeta>
+      <Meta name="title" content={metaTitle()} />
+    </>
+  )
+}
+
+export default Title

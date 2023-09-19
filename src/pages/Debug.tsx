@@ -183,7 +183,7 @@ const CONTENT = `
 const DebugPage: VoidComponent = () => {
   return (
     <div>
-      <Title>Debug</Title>
+      <Title title="Debug" />
       <PageRenderer content={CONTENT} />
     </div>
   )
