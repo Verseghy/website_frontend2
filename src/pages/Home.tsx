@@ -1,9 +1,11 @@
 import { createGraphQLClient, gql } from '@solid-primitives/graphql'
 import { VoidComponent } from 'solid-js'
+import { Meta } from 'solid-start'
 import Banners from '~/components/Banners'
 import CardGrid from '~/components/CardGrid'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { Post } from '~/models/post'
+import previewImage from '/assets/preview_image.png'
 
 const QUERY = gql`
   query Posts($last: Int) {
@@ -53,6 +55,12 @@ const HomePage: VoidComponent = () => {
 
   return (
     <>
+      <Meta name="og:site_name" content="Verseghy Ferenc Gimnázium" />
+      <Meta name="og:type" content="website" />
+      <Meta name="og:image" content={previewImage} />
+      <Meta name="og:description" content="A szolnoki Verseghy Ferenc Gimnázium weboldala" />
+      <Meta name="twitter:card" content="summary" />
+
       <div>
         <CardGrid posts={data()?.posts.edges.map((e) => e.node)} />
         <Banners />
