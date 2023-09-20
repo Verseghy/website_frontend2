@@ -6,11 +6,13 @@ import '~/scss/global.scss'
 import Layout from '~/components/Layout'
 import Title from '~/components/Title'
 import { RouteDefinition } from '@solidjs/router'
+import { postRouteData } from './state/post'
 
 const ROUTES: RouteDefinition[] = [
   {
     path: '/posts/:id',
     component: lazy(() => import('~/pages/Post')),
+    data: postRouteData,
   },
   {
     path: '/_debug',

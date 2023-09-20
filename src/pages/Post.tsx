@@ -1,64 +1,18 @@
-import { createEffect, createSignal, For, Show, VoidComponent } from 'solid-js'
+import { createEffect, For, Show, VoidComponent } from 'solid-js'
 import styles from './Post.module.scss'
 import { createGraphQLClient, gql } from '@solid-primitives/graphql'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
-import { Meta, useNavigate, useParams } from 'solid-start'
+import { Meta, RouteDataArgs, useNavigate, useRouteData } from 'solid-start'
 import { Post } from '~/models/post'
 import Title from '~/components/Title'
 import Label from '~/components/Label'
 import PageRenderer from '~/components/PageRenderer'
 import FormattedDate from '~/components/FormattedDate'
-
-const QUERY = gql`
-  query Post($id: Int!) {
-    post(id: $id) {
-      id,
-      title,
-      color,
-      description,
-      content,
-      date,
-      indexImage,
-      images,
-      author {
-        id,
-        name,
-        description,
-        image,
-      }
-      labels {
-        id,
-        color,
-        name,
-      }
-    }
-  }
-`
-
-type Response = {
-  post: Post
-}
+import { postRouteData } from '~/state/post'
 
 const PostPage: VoidComponent = () => {
-  // TODO: probably we can make this a global and reuse it everywhere
-  const newQuery = createGraphQLClient(GRAPHQL_BACKEND_URL)
+  const data = useRouteData<typeof postRouteData>()!
   const navigate = useNavigate()
-
-  const params = useParams<{ id: string }>()
-  const [queryParams, setQueryParams] = createSignal<false | { id: number }>(false)
-
-  createEffect(() => {
-    const parsed = Number(params.id)
-
-    if (!Number.isSafeInteger(parsed)) {
-      navigate('/404')
-      return
-    }
-
-    setQueryParams({ id: parsed })
-  })
-
-  const [data] = newQuery<Response>(QUERY, queryParams)
 
   createEffect(() => {
     const d = data()
@@ -82,6 +36,7 @@ const PostPage: VoidComponent = () => {
         <Meta property="og:image" content={data()!.post.indexImage} />
         <Meta property="og:author" content={data()!.post.author.name} />
         <Meta property="og:type" content="article" />
+        <Meta property="twitter:card" content="summary" />
 
         <div class={styles.container}>
           <div class={styles.labelContainer}>

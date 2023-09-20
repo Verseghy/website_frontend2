@@ -51,7 +51,7 @@ type Response = {
 
 const HomePage: VoidComponent = () => {
   const newQuery = createGraphQLClient(GRAPHQL_BACKEND_URL)
-  const [data] = newQuery<Response>(QUERY, { last: 21 })
+  const [data] = newQuery<Response>(QUERY, { last: 21 }, { deferStream: false })
 
   return (
     <>
