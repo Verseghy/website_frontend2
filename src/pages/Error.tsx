@@ -17,7 +17,7 @@ const ErrorPage: VoidComponent<ErrorPageProps> = (props) => {
   return (
     <>
       <Meta name="robots" content="noindex" />
-      <Title title="Hiba" />
+      <Title title={props.title} />
 
       <div class={styles.container}>
         <div class={styles.center}>
