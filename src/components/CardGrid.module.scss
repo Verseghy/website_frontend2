@@ -2,6 +2,5 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
   grid-gap: 2rem;
-  width: min(var(--page-width), calc(100% - 2 * var(--page-padding)));
   margin-inline: auto;
 }
