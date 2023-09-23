@@ -52,7 +52,7 @@ const Footer: VoidComponent = () => {
         <div class={styles.container}>
           <span>
             Honlap észrevételek, visszajelzések:{' '}
-            <A href="mailto:contact@zoltanszepesi.com">contact@zoltanszepesi.com</A>
+            <a href="mailto:contact@zoltanszepesi.com">contact@zoltanszepesi.com</a>
           </span>
           <div class={styles.right}>
             {/* TODO: facebook link */}
