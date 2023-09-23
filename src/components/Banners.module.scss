@@ -6,9 +6,5 @@
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  width: min(var(--page-width), calc(100% - 2 * var(--page-padding)));
-  margin: {
-    top: 3.2rem;
-    inline: auto;
-  }
+  margin-top: 3.2rem;
 }

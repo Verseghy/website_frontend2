@@ -1,0 +1,4 @@
+.container {
+  width: min(var(--page-width), 100% - 2 * var(--page-padding));
+  margin-inline: auto;
+}

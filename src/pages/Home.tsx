@@ -6,6 +6,7 @@ import CardGrid from '~/components/CardGrid'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { Post } from '~/models/post'
 import previewImage from '/assets/preview_image.png'
+import styles from './Home.module.scss'
 
 const QUERY = gql`
   query Posts($last: Int) {
@@ -61,7 +62,7 @@ const HomePage: VoidComponent = () => {
       <Meta name="og:description" content="A szolnoki Verseghy Ferenc Gimnázium weboldala" />
       <Meta name="twitter:card" content="summary" />
 
-      <div>
+      <div class={styles.container}>
         <CardGrid posts={data()?.posts.edges.map((e) => e.node)} />
         <Banners />
       </div>
