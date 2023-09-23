@@ -3,6 +3,13 @@ on:
   push:
     branches:
       - master
+
+
+env:
+  IMAGE_NAME: website_frontend2
+  IMAGE_TAGS: latest
+
+
 jobs:
   CD:
     runs-on: ubuntu-latest
@@ -24,21 +31,23 @@ jobs:
           namespace: 'verseghy-website-beta'
 
       - name: Buildah Build
+        id: build
         uses: redhat-actions/buildah-build@v2
         with:
-          image: verseghy/website_frontend2
-          tags: latest
+          image: ${{ env.IMAGE_NAME }}
+          tags: ${{ env.IMAGE_TAGS }}
           containerfiles: |
             ./Containerfile
+          oci: true
 
-      - name: Push To Dockerhub
+      - name: Push To GHCR
         uses: redhat-actions/push-to-registry@v2
         with:
-          image: verseghy/website_frontend2
-          tags: latest
-          registry: docker.io
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_AT }}
+          image: ${{ steps.build.outputs.image }}
+          tags: ${{ steps.build.outputs.tags }}
+          registry: ghcr.io/${{ github.repository_owner }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Restart deployment
         shell: bash
