@@ -5,6 +5,7 @@
   transition: box-shadow 300ms;
   display: flex;
   flex-direction: column;
+  background-color: hsl(var(--hue, 0) 100% 80%);
 
   &:hover {
     box-shadow: 0 0 20px #c3c3c3;

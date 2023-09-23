@@ -29,10 +29,10 @@ export type PostCardProps = {
 
 const PostCard: VoidComponent<PostCardProps> = (props) => {
   const link = () => `/posts/${props.post.id}`
-  const color = () => Color(props.post.color).saturate(100).lightness(80).string()
+  const hue = () => Color(props.post.color).hue()
 
   return (
-    <article class={styles.card} style={{ 'background-color': color() }}>
+    <article class={styles.card} style={{ '--hue': hue() }}>
       <A href={link()} class={styles.imageLink}>
         <img class={styles.indexImg} src={props.post.indexImage} alt="" />
       </A>
