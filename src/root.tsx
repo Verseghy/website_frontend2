@@ -7,6 +7,9 @@ import Layout from '~/components/Layout'
 import Title from '~/components/Title'
 import { RouteDefinition } from '@solidjs/router'
 import { postRouteData } from './state/post'
+import { HydrationScript } from 'solid-js/web'
+import StateProvider from './state/StateProvider'
+import { homeRouteData } from './state/home'
 
 const ROUTES: RouteDefinition[] = [
   {
@@ -21,6 +24,7 @@ const ROUTES: RouteDefinition[] = [
   {
     path: '/',
     component: lazy(() => import('~/pages/Home')),
+    data: homeRouteData,
   },
   {
     path: '/*all',
@@ -54,16 +58,19 @@ export default function Root() {
           href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&family=Roboto:wght@400;700&display=swap"
           rel="stylesheet"
         />
+        <HydrationScript />
       </Head>
       <Body>
-        <Layout>
-          <Suspense>
-            <ErrorBoundary>
-              <Routes />
-            </ErrorBoundary>
-          </Suspense>
-          <Scripts />
-        </Layout>
+        <StateProvider>
+          <Layout>
+            <Suspense>
+              <ErrorBoundary>
+                <Routes />
+              </ErrorBoundary>
+            </Suspense>
+            <Scripts />
+          </Layout>
+        </StateProvider>
       </Body>
     </Html>
   )
