@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: website-frontend2
-          image: verseghy/website_frontend2
+          image: ghcr.io/verseghy/website_frontend2
           ports:
             - containerPort: 3000
           imagePullPolicy: Always
