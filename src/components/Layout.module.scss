@@ -5,6 +5,10 @@
 
   .main {
     width: 100vw;
-    margin-top: 6.4rem;
+    margin-top: 5.6rem;
+
+    @include lg {
+      margin-top: 6.4rem;
+    }
   }
 }
