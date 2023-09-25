@@ -4,11 +4,9 @@ on:
     branches:
       - master
 
-
 env:
   IMAGE_NAME: website_frontend2
   IMAGE_TAGS: latest
-
 
 jobs:
   CD:
