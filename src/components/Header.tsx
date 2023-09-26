@@ -95,7 +95,7 @@ const Header: VoidComponent = () => {
   const [drawerOpen, setDrawerOpen] = createSignal(false)
 
   return (
-    <header>
+    <header class={styles.header}>
       <nav>
         <div>
           <Logo />

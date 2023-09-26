@@ -1,22 +1,22 @@
-header {
+.header {
   background: var(--header-background);
   box-shadow: var(--header-shadow);
   position: fixed;
   inset: 0 0 auto;
   z-index: 10;
-}
 
-nav {
-  height: 5.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: min(var(--page-width), calc(100% - 2 * var(--page-padding)));
-  margin-inline: auto;
-  position: relative;
+  nav {
+    height: 5.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: min(var(--page-width), calc(100% - 2 * var(--page-padding)));
+    margin-inline: auto;
+    position: relative;
 
-  @include lg {
-    height: 6.4rem;
+    @include lg {
+      height: 6.4rem;
+    }
   }
 }
 
@@ -132,128 +132,128 @@ nav {
       }
     }
   }
-}
 
-li {
-  list-style: none;
+  li {
+    list-style: none;
 
-  a,
-  span {
-    font-family: var(--header-menu-font);
-    transition: background-color 100ms;
-    display: flex;
-    align-items: center;
-    padding: 0 1.5rem;
-    color: #000;
-    line-height: 4.8rem;
-    height: 4.8rem;
-    cursor: pointer;
-    text-decoration: none;
-    border-radius: 0.3rem;
-    margin: 0.4rem;
-
-    @include lg {
-      line-height: 4rem;
-      height: 4rem;
-      margin: 0;
-    }
-
-    &.active,
-    &:hover {
-      background-color: var(--header-menu-hover-background);
-    }
-
-    &.active {
-      color: var(--header-menu-active-color);
-    }
-
-    &:focus-visible {
-      outline: 2px solid black;
+    a,
+    span {
+      font-family: var(--header-menu-font);
+      transition: background-color 100ms;
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      color: #000;
+      line-height: 4.8rem;
+      height: 4.8rem;
+      cursor: pointer;
+      text-decoration: none;
       border-radius: 0.3rem;
-    }
-
-    img {
-      display: block;
-      height: 2.5rem;
-      margin-block: auto;
-    }
-  }
-
-  .submenu {
-    position: relative;
-
-    .chevron {
-      position: absolute;
-      inset: calc((4.8rem - 16px) / 2) 0 0 auto;
-      width: 4.8rem;
-      pointer-events: none;
-      transition: transform 100ms;
+      margin: 0.4rem;
 
       @include lg {
-        display: none;
+        line-height: 4rem;
+        height: 4rem;
+        margin: 0;
       }
-    }
-  }
 
-  &.open,
-  &:focus-within {
-    span {
-      background: var(--header-menu-hover-background);
-
-      @include lg {
-        background: none;
-      }
-    }
-
-    .submenu .chevron {
-      transform: rotate3d(1, 0, 0, 180deg);
-    }
-
-    ul {
-      height: auto;
-      overflow: visible;
-    }
-  }
-
-  &:hover,
-  &:focus-within {
-    span {
-      @include lg {
-        border-bottom-left-radius: 0;
-        background: var(--header-menu-hover-background);
-      }
-    }
-
-    ul {
-      @include lg {
-        opacity: 1;
-        pointer-events: all;
-      }
-    }
-  }
-
-  ul {
-    height: 0;
-    overflow: hidden;
-    background: var(--header-menu-hover-background);
-    border-radius: 0.3rem;
-    margin: 0.4rem;
-    transition: opacity 100ms;
-
-    @include lg {
-      height: auto;
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
-      border-top-left-radius: 0;
-      margin: 0;
-    }
-
-    li a {
-      margin-inline: 0;
-
+      &.active,
       &:hover {
-        background: var(--header-submenu-hover-background);
+        background-color: var(--header-menu-hover-background);
+      }
+
+      &.active {
+        color: var(--header-menu-active-color);
+      }
+
+      &:focus-visible {
+        outline: 2px solid black;
+        border-radius: 0.3rem;
+      }
+
+      img {
+        display: block;
+        height: 2.5rem;
+        margin-block: auto;
+      }
+    }
+
+    .submenu {
+      position: relative;
+
+      .chevron {
+        position: absolute;
+        inset: calc((4.8rem - 16px) / 2) 0 0 auto;
+        width: 4.8rem;
+        pointer-events: none;
+        transition: transform 100ms;
+
+        @include lg {
+          display: none;
+        }
+      }
+    }
+
+    &.open,
+    &:focus-within {
+      span {
+        background: var(--header-menu-hover-background);
+
+        @include lg {
+          background: none;
+        }
+      }
+
+      .submenu .chevron {
+        transform: rotate3d(1, 0, 0, 180deg);
+      }
+
+      ul {
+        height: auto;
+        overflow: visible;
+      }
+    }
+
+    &:hover,
+    &:focus-within {
+      span {
+        @include lg {
+          border-bottom-left-radius: 0;
+          background: var(--header-menu-hover-background);
+        }
+      }
+
+      ul {
+        @include lg {
+          opacity: 1;
+          pointer-events: all;
+        }
+      }
+    }
+
+    ul {
+      height: 0;
+      overflow: hidden;
+      background: var(--header-menu-hover-background);
+      border-radius: 0.3rem;
+      margin: 0.4rem;
+      transition: opacity 100ms;
+
+      @include lg {
+        height: auto;
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+        border-top-left-radius: 0;
+        margin: 0;
+      }
+
+      li a {
+        margin-inline: 0;
+
+        &:hover {
+          background: var(--header-submenu-hover-background);
+        }
       }
     }
   }
