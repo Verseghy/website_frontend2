@@ -182,7 +182,13 @@ const CONTENT = `
 
 const DebugPage: VoidComponent = () => {
   return (
-    <div>
+    <div
+      style={{
+        'max-width': 'var(--content-page-width-wide)',
+        'margin-inline': 'auto',
+        'padding-inline': '30px'
+      }}
+    >
       <Title title="Debug" />
       <PageRenderer content={CONTENT} />
     </div>
