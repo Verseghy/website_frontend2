@@ -110,7 +110,8 @@
     overflow-x: auto;
     white-space: nowrap;
     display: block;
-    width: clamp(var(--content-page-width), 100%, var(--content-page-width-wide));
+    // width: clamp(var(--content-page-width), 100%, var(--content-page-width-wide));
+    max-width: min(100%, var(--content-page-width-width-wide));
 
     tbody {
       display: table;
