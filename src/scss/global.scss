@@ -34,8 +34,8 @@ body {
   --text-color: #000;
   --text-family: sans-serif;
   --text-family-alt: 'Cabin', sans-serif;
-  --text-family-content: serif;
-  --text-family-content-heading: sans-serif;
+  --text-family-content: -apple-system,BlinkMacSystemFont,'Roboto',sans-serif;
+  --text-family-content-heading: var(--text-family-content);
 
   --page-width: 1200px;
   --page-padding: 20px;
