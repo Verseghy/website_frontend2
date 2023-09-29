@@ -92,6 +92,19 @@ footer {
 
   .container {
     align-items: center;
+    flex-direction: column-reverse;
+
+    @include md {
+      flex-direction: row;
+    }
+  }
+
+  span {
+    text-align: center;
+
+    @include md {
+      text-align: initial;
+    }
   }
 
   a {
@@ -100,6 +113,11 @@ footer {
 
   .right {
     font-size: 2rem;
+    margin-bottom: 2rem;
+
+    @include md {
+      margin-bottom: 0;
+    }
 
     a {
       padding-inline: 0.5rem;
