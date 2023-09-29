@@ -36,25 +36,27 @@ const PostPage: VoidComponent = () => {
         <Meta property="twitter:card" content="summary" />
 
         <div class={styles.container}>
-          <div class={styles.labelContainer}>
-            <For each={data()!.post.labels}>{(label) => <Label label={label} />}</For>
+          <div class={styles.header}>
+            <div class={styles.labelContainer}>
+              <For each={data()!.post.labels}>{(label) => <Label label={label} />}</For>
+            </div>
+            <h1 class={styles.title}>{data()!.post.title}</h1>
+            <div class={styles.meta}>
+              <Show when={data()!.post.author.image !== null}>
+                <img class={styles.authorImage} src={data()!.post.author.image!} alt={data()!.post.author.name} />
+              </Show>
+              <a class={styles.author} href={searchLink()}>
+                {data()!.post.author.name}
+              </a>
+              <span class={styles.dot}>•</span>
+              <span class={styles.date}>
+                Közzétéve: <FormattedDate date={new Date(data()!.post.date)} />
+              </span>
+            </div>
           </div>
-          <h1 class={styles.title}>{data()!.post.title}</h1>
-          <div class={styles.meta}>
-            <Show when={data()!.post.author.image !== null}>
-              <img class={styles.authorImage} src={data()!.post.author.image!} alt={data()!.post.author.name} />
-            </Show>
-            <a class={styles.author} href={searchLink()}>
-              {data()!.post.author.name}
-            </a>
-            <span class={styles.dot}>•</span>
-            <span class={styles.date}>
-              Közzétéve: <FormattedDate date={new Date(data()!.post.date)} />
-            </span>
-          </div>
+          <img class={styles.indexImage} src={data()!.post.indexImage} alt="" />
+          <PageRenderer content={data()!.post.content} />
         </div>
-        <img class={styles.indexImage} src={data()!.post.indexImage} alt="" />
-        <PageRenderer content={data()!.post.content} />
       </Show>
     </>
   )

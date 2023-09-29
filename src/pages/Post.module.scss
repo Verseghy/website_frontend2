@@ -1,5 +1,9 @@
 .container {
-  width: min(var(--content-page-width), 100%);
+  padding-inline: var(--page-padding);
+}
+
+.header {
+  max-width: var(--content-page-width);
   margin-inline: auto;
 }
 
