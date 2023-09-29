@@ -38,7 +38,11 @@ body {
   --text-family-content-heading: var(--text-family-content);
 
   --page-width: 1200px;
-  --page-padding: 20px;
+  --page-padding: 1rem;
+
+  @include md {
+    --page-padding: 2rem;
+  }
 
   --content-page-width: 70rem;
   --content-page-width-wide: 100rem;
