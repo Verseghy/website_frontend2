@@ -186,7 +186,7 @@ const DebugPage: VoidComponent = () => {
       style={{
         'max-width': 'var(--content-page-width-wide)',
         'margin-inline': 'auto',
-        'padding-inline': '30px'
+        'padding-inline': '30px',
       }}
     >
       <Title title="Debug" />
