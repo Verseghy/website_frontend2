@@ -1,5 +1,5 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { createEffect, createResource, Resource, ResourceReturn, useContext } from 'solid-js'
+import { createEffect, createResource, Resource, useContext } from 'solid-js'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { Post } from '~/models/post'
 import { StateContext } from './StateProvider'

@@ -34,7 +34,7 @@ const PostCard: VoidComponent<PostCardProps> = (props) => {
   return (
     <article class={styles.card} style={{ '--hue': hue() }}>
       <A href={link()} class={styles.imageLink}>
-        <img class={styles.indexImg} src={props.post.indexImage} alt="" />
+        <img class={styles.indexImg} src={props.post.indexImage} alt="" loading="lazy" />
       </A>
       <div class={styles.labelContainer}>
         <For each={props.post.labels}>{(label) => <Label label={label} />}</For>
