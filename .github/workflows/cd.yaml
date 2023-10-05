@@ -25,7 +25,6 @@ jobs:
         with:
           openshift_server_url: ${{ secrets.OKD4_HOST }}
           openshift_token: ${{ secrets.OKD4_TOKEN }}
-          certificate_authority_data: ${{ secrets.OKD4_CA }}
           namespace: 'verseghy-website-beta'
 
       - name: Buildah Build

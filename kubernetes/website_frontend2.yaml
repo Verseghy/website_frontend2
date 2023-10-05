@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: website-frontend2
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: website-frontend2
@@ -38,6 +38,13 @@ spec:
           resources:
             limits:
               memory: 128Mi
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app: website-frontend2
 ---
 apiVersion: v1
 kind: Service
