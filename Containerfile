@@ -18,7 +18,7 @@ COPY --from=build /app/dist /app/dist
 EXPOSE 3000
 
 RUN addgroup --system app && \
-    adduser --system -D -H --shell /bin/false -G app app && \
+    adduser --system --disabled-password --no-create-home --shell /bin/false -G app app && \
     chown -R app:app /app
 USER app
 CMD [ "node", "/app/dist/server.js" ]
