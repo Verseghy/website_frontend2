@@ -17,8 +17,8 @@ COPY --from=prod-deps /app/node_modules /app/node_modules
 COPY --from=build /app/dist /app/dist
 EXPOSE 3000
 
-RUN addgroup -S app && \
-    adduser -S -D -H --shell /bin/false -G app app && \
+RUN addgroup --system app && \
+    adduser --system -D -H --shell /bin/false -G app app && \
     chown -R app:app /app
 USER app
 CMD [ "node", "/app/dist/server.js" ]
