@@ -116,7 +116,7 @@ const Header: VoidComponent = () => {
               <MenuItem href="/pages/menza-ugyintezes-etkezes-lemondas">Ügyinténzés, étkezés lemondása</MenuItem>
             </MenuDropdown>
             <MenuItem href="/events">Események</MenuItem>
-            <MenuItem href="/misc/diaktoll">Diáktoll</MenuItem>
+            <MenuItem href="/information/beiskolazas">Beiskolázás</MenuItem>
             <MenuItemKreta />
           </ul>
           <Search class={styles.bottom} />
