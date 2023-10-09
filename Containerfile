@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi9/nodejs-18 AS base
+FROM node:18-slim AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
