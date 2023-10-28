@@ -33,20 +33,14 @@ type Response = {
   post: Post
 }
 
-export const postRouteData = ({ params, navigate }: RouteDataArgs) => {
-  const parsedId = parseInt(params.id)
-
-  if (!Number.isSafeInteger(parsedId)) {
-    navigate('/404')
-    return
-  }
-
+export const postRouteData = ({ params }: RouteDataArgs) => {
+  const id = Number(params.id)
   const newQuery = createGraphQLClient(GRAPHQL_BACKEND_URL)
 
   const [data] = newQuery<Response>(
     QUERY,
     {
-      id: parsedId,
+      id,
     },
     {
       deferStream: true,

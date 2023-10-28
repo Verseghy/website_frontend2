@@ -14,6 +14,9 @@ import { homeRouteData } from './state/home'
 const ROUTES: RouteDefinition[] = [
   {
     path: '/posts/:id',
+    matchFilters: {
+      id: (id: string) => Number.isSafeInteger(parseInt(id)),
+    },
     component: lazy(() => import('~/pages/Post')),
     data: postRouteData,
   },
