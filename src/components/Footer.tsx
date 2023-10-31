@@ -23,7 +23,7 @@ const Footer: VoidComponent = () => {
             <h4>Rólunk</h4>
             <span>5000 Szolnok, Tisza park 1.</span>
             <span>Telefon: 56/514-953; 20/540-4896</span>
-            <A href="mailto: verseghygimnazium@gmail.com">E-mail: verseghygimnazium@gmail.com</A>
+            <a href="mailto: verseghygimnazium@gmail.com">E-mail: verseghygimnazium@gmail.com</a>
             <span>OM azonosító: 035992</span>
             <span>Honlap verzió: {VERSION}</span>
           </div>
