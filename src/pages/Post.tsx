@@ -24,7 +24,7 @@ const PostPage: VoidComponent = () => {
   })
 
   const searchLink = () => `/search/author/${data()!.post.author.id}`
-  const images = () => data()?.post.images ?? []
+  const images = () => data()?.post.images
 
   return (
     <>
@@ -58,9 +58,9 @@ const PostPage: VoidComponent = () => {
           </div>
           <img class={styles.indexImage} src={data()!.post.indexImage} alt="" />
           <PageRenderer content={data()!.post.content} />
-          <Show when={!!images()}>
+          <Show when={images()!.length > 0}>
             <div class={styles.imageViewerContainer}>
-              <ImageViewer images={images()} />
+              <ImageViewer images={images()!} />
             </div>
           </Show>
         </div>
