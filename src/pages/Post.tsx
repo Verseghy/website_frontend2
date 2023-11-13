@@ -6,6 +6,7 @@ import Label from '~/components/Label'
 import PageRenderer from '~/components/PageRenderer'
 import FormattedDate from '~/components/FormattedDate'
 import { postRouteData } from '~/state/post'
+import ImageViewer from '~/components/ImageViewer'
 
 const PostPage: VoidComponent = () => {
   const data = useRouteData<typeof postRouteData>()!
@@ -23,6 +24,7 @@ const PostPage: VoidComponent = () => {
   })
 
   const searchLink = () => `/search/author/${data()!.post.author.id}`
+  const images = () => data()?.post.images ?? []
 
   return (
     <>
@@ -56,6 +58,9 @@ const PostPage: VoidComponent = () => {
           </div>
           <img class={styles.indexImage} src={data()!.post.indexImage} alt="" />
           <PageRenderer content={data()!.post.content} />
+          <Show when={!!images()}>
+            <ImageViewer images={images()} />
+          </Show>
         </div>
       </Show>
     </>
