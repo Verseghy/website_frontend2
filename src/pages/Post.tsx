@@ -59,7 +59,9 @@ const PostPage: VoidComponent = () => {
           <img class={styles.indexImage} src={data()!.post.indexImage} alt="" />
           <PageRenderer content={data()!.post.content} />
           <Show when={!!images()}>
-            <ImageViewer images={images()} />
+            <div class={styles.imageViewerContainer}>
+              <ImageViewer images={images()} />
+            </div>
           </Show>
         </div>
       </Show>

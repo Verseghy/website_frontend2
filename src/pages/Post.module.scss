@@ -86,3 +86,8 @@
     max-width: var(--content-page-width-wide);
   }
 }
+
+.image-viewer-container {
+  max-width: var(--content-page-width);
+  margin: 0 auto;
+}

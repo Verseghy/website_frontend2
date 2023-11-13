@@ -9,10 +9,6 @@
   position: relative;
   cursor: pointer;
 
-  // TODO: should be on a conaitner div
-  max-width: 770px;
-  margin: 0 auto;
-
   &:hover .right,
   &:hover .left {
     opacity: 1;
