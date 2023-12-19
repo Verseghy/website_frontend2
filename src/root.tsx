@@ -51,7 +51,7 @@ export default function Root() {
   const Routes = useRoutes(ROUTES)
 
   return (
-    <Html lang="en">
+    <Html lang="hu">
       <Head>
         <Title />
         <Meta charset="utf-8" />
