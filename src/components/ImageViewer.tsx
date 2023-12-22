@@ -1,5 +1,5 @@
 import { FaSolidChevronLeft } from 'solid-icons/fa'
-import { Accessor, createSignal, For, VoidComponent } from 'solid-js'
+import { createEffect, on, createSignal, For, onMount, VoidComponent, untrack } from 'solid-js'
 import styles from './ImageViewer.module.scss'
 
 export type ImageViewerProps = {
@@ -7,49 +7,90 @@ export type ImageViewerProps = {
 }
 
 const ImageViewer: VoidComponent<ImageViewerProps> = (props) => {
+  let scroller: HTMLDivElement | undefined
+  let observer: IntersectionObserver
+  let elements: HTMLElement[] = []
+
   const [activeIndex, setActiveIndex] = createSignal(0)
 
+  const scroll = () => {
+    // TODO: This is slighty off and causes a little jump on every scroll.
+    // `scroller.scrollWith` contains N image and N-1 gaps between them.
+    scroller.scrollTo((scroller.scrollWidth / props.images.length) * activeIndex(), 0)
+  }
+
   const onClickLeft = () => {
-    setActiveIndex((i) => {
-      if (i === 0) return props.images.length - 1
-      return i - 1
-    })
+    setActiveIndex((i) => Math.min(i - 1, props.images.length - 1))
+    scroll()
   }
 
   const onClickRight = () => {
-    setActiveIndex((i) => (i + 1) % props.images.length)
+    setActiveIndex((i) => Math.max(i + 1, 0))
+    scroll()
   }
 
-  const left = (index: Accessor<number>) => {
-    if (activeIndex() > index()) {
-      return -100
-    } else if (activeIndex() < index()) {
-      return 100
-    }
-    return 0
-  }
+  onMount(() => {
+    observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries = entries.filter((e) => e.isIntersecting)
+
+        if (entries.length > 0) {
+          const target = entries[0].target
+          untrack(() => {
+            setActiveIndex(elements.indexOf(target))
+          })
+        }
+      },
+      {
+        root: scroller,
+        threshold: 0.5,
+      }
+    )
+  })
+
+  createEffect(
+    on([() => props.images], (v, prevV) => {
+      elements.forEach((e) => observer.unobserve(e))
+      elements = Array.from(scroller!.querySelectorAll('figure'))
+      elements.forEach((e) => observer.observe(e))
+    })
+  )
 
   return (
-    <div class={styles.viewer}>
-      <For each={props.images}>
-        {(image, index) => {
-          return (
-            <img
-              src={image}
-              alt=""
-              style={{
-                left: `${left(index)}%`,
-              }}
-            />
-          )
-        }}
-      </For>
+    <div aria-label="Képek">
+      <div class={styles.viewer}>
+        <button
+          class={styles.left}
+          onClick={onClickLeft}
+          title="Előző kép"
+          aria-label="Előző kép"
+          disabled={activeIndex() == 0}
+        >
+          <FaSolidChevronLeft size="4rem" aria-hidden="true" />
+        </button>
+        <button
+          class={styles.right}
+          onClick={onClickRight}
+          title="Következő kép"
+          aria-label="Következő kép"
+          disabled={activeIndex() == props.images.length - 1}
+        >
+          <FaSolidChevronLeft size="4rem" aria-hidden="true" />
+        </button>
 
-      <div class={styles.left} onClick={onClickLeft}>
-        <FaSolidChevronLeft size="4rem" />
-      </div>
-      <div class={styles.right} onClick={onClickRight}>
-        <FaSolidChevronLeft size="4rem" />
+        <div class={styles.scroller} role="group" aria-label="Képnézegető" aria-live="polite" ref={scroller}>
+          <For each={props.images}>
+            {(image, index) => {
+              const label = () => `${index() + 1}/${props.images.length}`
+
+              return (
+                <figure aria-label={label()} aria-roledescription="item" inert={index() != activeIndex()}>
+                  <img src={image} alt={label()} loading="lazy" />
+                </figure>
+              )
+            }}
+          </For>
+        </div>
       </div>
     </div>
   )
