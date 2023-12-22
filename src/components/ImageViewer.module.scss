@@ -6,16 +6,11 @@
   border: 1px solid black;
   box-sizing: border-box;
   aspect-ratio: 16 / 10;
-  cursor: pointer;
   position: relative;
 
   &:hover :is(.right, .left),
   &:focus-within {
     opacity: 1;
-
-    &:disabled {
-      opacity: 0.5;
-    }
   }
 
   :is(.left, .right) {
@@ -30,6 +25,10 @@
     transition: opacity 300ms;
     padding-left: 0.5rem;
     cursor: pointer;
+
+    &:disabled svg {
+      opacity: 0.5;
+    }
   }
 
   .left {
