@@ -14,9 +14,11 @@ const ImageViewer: VoidComponent<ImageViewerProps> = (props) => {
   const [activeIndex, setActiveIndex] = createSignal(0)
 
   const scroll = () => {
-    // TODO: This is slighty off and causes a little jump on every scroll.
-    // `scroller.scrollWith` contains N image and N-1 gaps between them.
-    scroller.scrollTo((scroller.scrollWidth / props.images.length) * activeIndex(), 0)
+    untrack(() => {
+      const target = elements[activeIndex()]
+      const delta = Math.abs(scroller!.offsetLeft - target.offsetLeft)
+      scroller!.scrollTo(delta, 0)
+    })
   }
 
   const onClickLeft = () => {
