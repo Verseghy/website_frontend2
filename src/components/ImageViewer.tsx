@@ -33,7 +33,7 @@ const ImageViewer: VoidComponent<ImageViewerProps> = (props) => {
 
   onMount(() => {
     observer = new IntersectionObserver(
-      (entries, observer) => {
+      (entries) => {
         entries = entries.filter((e) => e.isIntersecting)
 
         if (entries.length > 0) {
