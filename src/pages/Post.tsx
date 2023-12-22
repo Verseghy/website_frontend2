@@ -37,7 +37,7 @@ const PostPage: VoidComponent = () => {
         <Meta property="og:type" content="article" />
         <Meta property="twitter:card" content="summary" />
 
-        <div class={styles.container}>
+        <article class={styles.container}>
           <div class={styles.header}>
             <div class={styles.labelContainer}>
               <For each={data()!.post.labels}>{(label) => <Label label={label} />}</For>
@@ -50,7 +50,9 @@ const PostPage: VoidComponent = () => {
               <a class={styles.author} href={searchLink()}>
                 {data()!.post.author.name}
               </a>
-              <span class={styles.dot}>•</span>
+              <span class={styles.dot} aria-hidden="true">
+                •
+              </span>
               <span class={styles.date}>
                 Közzétéve: <FormattedDate date={new Date(data()!.post.date)} />
               </span>
@@ -63,7 +65,7 @@ const PostPage: VoidComponent = () => {
               <ImageViewer images={images()!} />
             </div>
           </Show>
-        </div>
+        </article>
       </Show>
     </>
   )
