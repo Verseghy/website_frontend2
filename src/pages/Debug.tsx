@@ -1,4 +1,5 @@
-import { VoidComponent } from 'solid-js'
+import { RouteSectionProps } from '@solidjs/router'
+import { Component } from 'solid-js'
 import PageRenderer from '~/components/PageRenderer'
 import Title from '~/components/Title'
 
@@ -180,7 +181,7 @@ const CONTENT = `
   </ul>
   `
 
-const DebugPage: VoidComponent = () => {
+const DebugPage: Component<RouteSectionProps> = () => {
   return (
     <div
       style={{

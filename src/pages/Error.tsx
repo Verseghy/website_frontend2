@@ -1,6 +1,6 @@
+import { Meta } from '@solidjs/meta'
 import { A } from '@solidjs/router'
 import { Show, VoidComponent } from 'solid-js'
-import { Meta } from 'solid-start'
 import Title from '~/components/Title'
 import styles from './Error.module.scss'
 

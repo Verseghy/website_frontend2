@@ -1,13 +1,14 @@
-import { VoidComponent } from 'solid-js'
-import { Meta, useRouteData } from 'solid-start'
+import { Component } from 'solid-js'
 import Banners from '~/components/Banners'
 import CardGrid from '~/components/CardGrid'
-import { homeRouteData } from '~/state/home'
 import previewImage from '/assets/preview_image.png'
 import styles from './Home.module.scss'
+import { Meta } from '@solidjs/meta'
+import { createAsync, RouteSectionProps } from '@solidjs/router'
+import { queryHomePage } from '~/data/home.data'
 
-const HomePage: VoidComponent = () => {
-  const data = useRouteData<typeof homeRouteData>()
+const HomePage: Component<RouteSectionProps> = () => {
+  const data = createAsync(() => queryHomePage())
 
   return (
     <>

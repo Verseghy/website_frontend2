@@ -1,12 +1,18 @@
-import solid from 'solid-start/vite'
-import { defineConfig } from 'vite'
+import { defineConfig } from '@solidjs/start/config'
 
 export default defineConfig({
-  plugins: [solid()],
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "./src/scss/import.scss" as *;`,
+        additionalData: (source: string, file: string) => {
+          if (file.endsWith('import.scss') || file.endsWith('_breakpoints.scss')) {
+            return source
+          }
+          return `
+            @use "./src/scss/import.scss" as *;
+            ${source}
+          `
+        },
       },
     },
     modules: {

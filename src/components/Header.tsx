@@ -1,4 +1,4 @@
-import { useLocation } from '@solidjs/router'
+import { A, useLocation, useNavigate } from '@solidjs/router'
 import { FaSolidBars, FaSolidChevronDown, FaSolidMagnifyingGlass, FaSolidXmark } from 'solid-icons/fa'
 import {
   createContext,
@@ -10,7 +10,6 @@ import {
   useContext,
   VoidComponent,
 } from 'solid-js'
-import { A, useNavigate } from 'solid-start'
 import styles from './Header.module.scss'
 import Logo from './Logo'
 import kretalogo from '/assets/icons/kreta.png'

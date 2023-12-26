@@ -1,5 +1,5 @@
+import { A } from '@solidjs/router'
 import { VoidComponent } from 'solid-js'
-import { A } from 'solid-start'
 import styles from './Logo.module.scss'
 import logo from '/assets/icons/logo.svg'
 

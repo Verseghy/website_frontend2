@@ -1,9 +1,5 @@
 import { VoidComponent } from 'solid-js'
-import { Meta, Title as TitleMeta } from 'solid-start'
-
-/* export type TitleProps = { */
-/*   children?: string */
-/* } */
+import { Meta, Title as TitleMeta } from '@solidjs/meta'
 
 const BASE_TITLE = 'Verseghy Ferenc Gimnázium'
 
