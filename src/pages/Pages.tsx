@@ -13,7 +13,7 @@ const PagesPage: Component<RouteSectionProps> = ({ params }) => {
 
   return (
     <Show when={!!data()}>
-      <Title title="" />
+      <Title title={data()!.title} />
       <Meta property="og:title" content={data()!.title} />
 
       <div class={styles.container}>
