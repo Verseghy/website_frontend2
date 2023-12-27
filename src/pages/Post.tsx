@@ -9,12 +9,12 @@ import { createAsync, RouteSectionProps } from '@solidjs/router'
 import { Meta } from '@solidjs/meta'
 import { queryPostById } from '~/data/post.data'
 
+// eslint-disable-next-line solid/no-destructure
 const PostPage: Component<RouteSectionProps> = ({ params }) => {
   const data = createAsync(() => queryPostById(params.id), {
     deferStream: true,
   })
 
-  const searchLink = () => `/search?author=${encodeURIComponent(data()!.author.id)}`
   const images = () => data()?.images
 
   return (
@@ -25,7 +25,7 @@ const PostPage: Component<RouteSectionProps> = ({ params }) => {
         <Meta property="og:description" content={data()!.description} />
         <Meta property="og:image" content={data()!.indexImage} />
         <Show when={data()!.author}>
-          <Meta property="og:author" content={data()!.author.name} />
+          <Meta property="og:author" content={data()!.author!.name} />
         </Show>
         <Meta property="og:type" content="article" />
         <Meta property="twitter:card" content="summary" />
@@ -38,11 +38,11 @@ const PostPage: Component<RouteSectionProps> = ({ params }) => {
             <h1 class={styles.title}>{data()!.title}</h1>
             <div class={styles.meta}>
               <Show when={data()!.author}>
-                <Show when={data()!.author.image !== null}>
-                  <img class={styles.authorImage} src={data()!.author.image!} alt={data()!.author.name} />
+                <Show when={data()!.author!.image !== null}>
+                  <img class={styles.authorImage} src={data()!.author!.image!} alt={data()!.author!.name} />
                 </Show>
-                <a class={styles.author} href={searchLink()}>
-                  {data()!.author.name}
+                <a class={styles.author} href={`/search?author=${encodeURIComponent(data()!.author!.id)}`}>
+                  {data()!.author!.name}
                 </a>
                 <span class={styles.dot} aria-hidden="true">
                   •

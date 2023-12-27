@@ -51,7 +51,7 @@ const ImageViewer: VoidComponent<ImageViewerProps> = (props) => {
   })
 
   createEffect(
-    on([() => props.images], (v, prevV) => {
+    on([() => props.images], () => {
       elements.forEach((e) => observer.unobserve(e))
       elements = Array.from(scroller!.querySelectorAll('figure'))
       elements.forEach((e) => observer.observe(e))

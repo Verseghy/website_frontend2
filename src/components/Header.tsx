@@ -1,15 +1,6 @@
 import { A, useLocation, useNavigate } from '@solidjs/router'
 import { FaSolidBars, FaSolidChevronDown, FaSolidMagnifyingGlass, FaSolidXmark } from 'solid-icons/fa'
-import {
-  createContext,
-  createEffect,
-  createMemo,
-  createSignal,
-  ParentComponent,
-  Setter,
-  useContext,
-  VoidComponent,
-} from 'solid-js'
+import { createContext, createMemo, createSignal, ParentComponent, Setter, useContext, VoidComponent } from 'solid-js'
 import styles from './Header.module.scss'
 import Logo from './Logo'
 import kretalogo from '/assets/icons/kreta.png'
@@ -56,6 +47,7 @@ const MenuItem: ParentComponent<{ href: string }> = (props) => {
   const setLinks = useContext(DropdownContext)
 
   if (setLinks !== undefined) {
+    // eslint-disable-next-line solid/reactivity
     setLinks((links) => [...links, props.href])
   }
 
