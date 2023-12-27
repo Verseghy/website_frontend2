@@ -19,9 +19,10 @@ const getSanitizer = (): SanizerFn => {
     // TODO: fix server side html sanitization
     return (x) => x
   } else {
-    return (dirty) => DOMPurify.sanitize(dirty, {
-      ADD_TAGS: ['iframe'],
-    })
+    return (dirty) =>
+      DOMPurify.sanitize(dirty, {
+        ADD_TAGS: ['iframe'],
+      })
   }
 }
 
