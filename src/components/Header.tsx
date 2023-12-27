@@ -77,7 +77,7 @@ const Search: VoidComponent<{ class: string }> = (props) => {
 
     if (!inputRef.value) return
 
-    navigate(`/search/term/${inputRef.value}`)
+    navigate(`/search?term=${encodeURIComponent(inputRef.value)}`)
   }
 
   return (

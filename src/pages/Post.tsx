@@ -12,7 +12,7 @@ import { queryPostById } from '~/data/post.data'
 const PostPage: Component<RouteSectionProps> = ({ params }) => {
   const data = createAsync(() => queryPostById(params.id))
 
-  const searchLink = () => `/search/author/${data()!.author.id}`
+  const searchLink = () => `/search?author=${encodeURIComponent(data()!.author.id)}`
   const images = () => data()?.images
 
   return (

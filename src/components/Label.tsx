@@ -11,7 +11,7 @@ export type LabelProps = {
 const LabelComponent: VoidComponent<LabelProps> = (props) => {
   return (
     <A
-      href={`/search/label/${props.label.id}`}
+      href={`/search?label=${encodeURIComponent(props.label.id)}`}
       style={{ 'background-color': props.label.color }}
       classList={{
         [styles.label]: true,
