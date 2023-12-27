@@ -23,7 +23,14 @@ const SearchPage: Component<RouteSectionProps> = ({ location }) => {
         <Show when={!!location.query.term}>
           <h1 class={styles.title}>Találatok erre a kifejezésre: "{location.query.term}"</h1>
         </Show>
-        <CardGrid posts={data()} />
+        <Show when={data()}>
+          <Show when={data()!.length > 0}>
+            <CardGrid posts={data()} />
+          </Show>
+          <Show when={data()!.length === 0}>
+            <p>Nincs találat!</p>
+          </Show>
+        </Show>
       </div>
     </>
   )
