@@ -10,6 +10,7 @@ import { MetaProvider } from '@solidjs/meta'
 import { loadHomePage } from './data/home.data'
 import { loadPost } from './data/post.data'
 import { loadSearchPage } from './data/search.data'
+import { loadPagesPage } from './data/pages.data'
 
 const ROUTES: RouteDefinition[] = [
   {
@@ -21,8 +22,9 @@ const ROUTES: RouteDefinition[] = [
     load: loadPost,
   },
   {
-    path: '/_debug',
-    component: lazy(() => import('~/pages/Debug')),
+    path: '/pages/:slug',
+    component: lazy(() => import('~/pages/Pages')),
+    load: loadPagesPage,
   },
   {
     path: '/search',
@@ -38,6 +40,10 @@ const ROUTES: RouteDefinition[] = [
         load: loadSearchPage,
       },
     ],
+  },
+  {
+    path: '/_debug',
+    component: lazy(() => import('~/pages/Debug')),
   },
   {
     path: '/',
