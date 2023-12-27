@@ -4,4 +4,6 @@ node_modules
 *.md
 dist
 .solid
-Dockerfile
+Containerfile
+.vinxi
+.output
