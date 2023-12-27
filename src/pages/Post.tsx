@@ -10,7 +10,9 @@ import { Meta } from '@solidjs/meta'
 import { queryPostById } from '~/data/post.data'
 
 const PostPage: Component<RouteSectionProps> = ({ params }) => {
-  const data = createAsync(() => queryPostById(params.id))
+  const data = createAsync(() => queryPostById(params.id), {
+    deferStream: true,
+  })
 
   const searchLink = () => `/search?author=${encodeURIComponent(data()!.author.id)}`
   const images = () => data()?.images
