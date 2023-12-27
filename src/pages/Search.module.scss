@@ -1,0 +1,10 @@
+.container {
+  width: min(var(--page-width), 100% - 2 * var(--page-padding));
+  margin-inline: auto;
+  margin-top: 3rem;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 2.4rem;
+}

@@ -9,6 +9,7 @@ import { RouteDefinition, Router } from '@solidjs/router'
 import { MetaProvider } from '@solidjs/meta'
 import { loadHomePage } from './data/home.data'
 import { loadPost } from './data/post.data'
+import { loadSearchPage } from './data/search.data'
 
 const ROUTES: RouteDefinition[] = [
   {
@@ -22,6 +23,21 @@ const ROUTES: RouteDefinition[] = [
   {
     path: '/_debug',
     component: lazy(() => import('~/pages/Debug')),
+  },
+  {
+    path: '/search',
+    children: [
+      {
+        path: '/',
+        component: lazy(() => import('~/pages/Search')),
+        load: loadSearchPage,
+      },
+      {
+        path: '/:type/:value',
+        component: lazy(() => import('~/pages/Search').then((c) => ({ default: c.SearchPageRedirect }))),
+        load: loadSearchPage,
+      },
+    ],
   },
   {
     path: '/',
