@@ -50,5 +50,5 @@ export const queryPostById = cache(async (id: string): Promise<Post> => {
 }, 'Post.queryPostById')
 
 export const loadPost: RouteLoadFunc = ({ params }) => {
-  queryPostById(params.id)
+  void queryPostById(params.id)
 }

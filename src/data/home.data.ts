@@ -63,5 +63,5 @@ export const queryHomePage = cache(async (endCursor?: string): Promise<Post[]> =
 }, 'Home.queryHomePage')
 
 export const loadHomePage: RouteLoadFunc = () => {
-  queryHomePage()
+  void queryHomePage()
 }
