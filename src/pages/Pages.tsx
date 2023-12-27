@@ -5,6 +5,7 @@ import PageRenderer from '~/components/PageRenderer'
 import { queryPageByID } from '~/data/pages.data'
 import styles from './Pages.module.scss'
 
+// eslint-disable-next-line solid/no-destructure
 const PagesPage: Component<RouteSectionProps> = ({ params }) => {
   const data = createAsync(() => queryPageByID(params.slug), {
     deferStream: true,

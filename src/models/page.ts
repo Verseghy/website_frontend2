@@ -8,7 +8,6 @@ export type Page = {
   name: string
   title: string
   content: string
-  extras: {
-    [attr: string]: any
-  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  extras: Record<string, any>
 }
