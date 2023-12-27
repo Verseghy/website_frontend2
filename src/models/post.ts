@@ -7,7 +7,7 @@ export type Post = {
   date: string // TODO: Date
   indexImage: string
   images: string[]
-  author: Author
+  author?: Author
   labels: Label[]
 }
 

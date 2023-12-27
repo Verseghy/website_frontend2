@@ -6,7 +6,7 @@ import FormattedDate from './FormattedDate'
 import Label from './Label'
 import styles from './PostCard.module.scss'
 
-export type CardAuthorProps = {
+type CardAuthorProps = {
   author: Author
   date: Date
 }
@@ -14,10 +14,12 @@ export type CardAuthorProps = {
 const CardAuthor: VoidComponent<CardAuthorProps> = (props) => {
   return (
     <div class={styles.bottom}>
-      <Show when={!!props.author.image}>
-        <img class={styles.authorImg} src={props.author.image!} alt={props.author.name} />
+      <Show when={props.author}>
+        <Show when={props.author.image}>
+          <img class={styles.authorImg} src={props.author.image!} alt={props.author.name} />
+        </Show>
+        <span class={styles.authorName}>{props.author.name}</span>
       </Show>
-      <span class={styles.authorName}>{props.author.name}</span>
       <FormattedDate date={props.date} />
     </div>
   )

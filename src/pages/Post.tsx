@@ -24,7 +24,9 @@ const PostPage: Component<RouteSectionProps> = ({ params }) => {
         <Meta property="og:title" content={data()!.title} />
         <Meta property="og:description" content={data()!.description} />
         <Meta property="og:image" content={data()!.indexImage} />
-        <Meta property="og:author" content={data()!.author.name} />
+        <Show when={data()!.author}>
+          <Meta property="og:author" content={data()!.author.name} />
+        </Show>
         <Meta property="og:type" content="article" />
         <Meta property="twitter:card" content="summary" />
 
@@ -35,15 +37,17 @@ const PostPage: Component<RouteSectionProps> = ({ params }) => {
             </div>
             <h1 class={styles.title}>{data()!.title}</h1>
             <div class={styles.meta}>
-              <Show when={data()!.author.image !== null}>
-                <img class={styles.authorImage} src={data()!.author.image!} alt={data()!.author.name} />
+              <Show when={data()!.author}>
+                <Show when={data()!.author.image !== null}>
+                  <img class={styles.authorImage} src={data()!.author.image!} alt={data()!.author.name} />
+                </Show>
+                <a class={styles.author} href={searchLink()}>
+                  {data()!.author.name}
+                </a>
+                <span class={styles.dot} aria-hidden="true">
+                  •
+                </span>
               </Show>
-              <a class={styles.author} href={searchLink()}>
-                {data()!.author.name}
-              </a>
-              <span class={styles.dot} aria-hidden="true">
-                •
-              </span>
               <span class={styles.date}>
                 Közzétéve: <FormattedDate date={new Date(data()!.date)} />
               </span>
