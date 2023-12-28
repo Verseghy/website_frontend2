@@ -30,7 +30,7 @@
     "@solidjs/router": "^0.10.5",
     "@solidjs/start": "^0.4.2",
     "color": "^4.2.3",
-    "date-fns": "^2.30.0",
+    "date-fns": "^3.0.6",
     "dompurify": "^3.0.6",
     "normalize.css": "^8.0.1",
     "solid-icons": "^1.1.0",
