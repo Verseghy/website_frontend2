@@ -3,9 +3,9 @@ import { VERSION } from '~/constants'
 import styles from './Footer.module.scss'
 import { FaBrandsFacebookF, FaBrandsGithub } from 'solid-icons/fa'
 import Logo from './Logo'
-import kk from '/assets/icons/kk-logo.jpg'
-import kreta from '/assets/icons/kreta.png'
-import eugy from '/assets/icons/eugy.png'
+import kk from '~/assets/icons/kk-logo.jpg'
+import kreta from '~/assets/icons/kreta.png'
+import eugy from '~/assets/icons/eugy.png'
 import { A } from '@solidjs/router'
 
 const Footer: VoidComponent = () => {

@@ -3,7 +3,7 @@ import { FaSolidBars, FaSolidChevronDown, FaSolidMagnifyingGlass, FaSolidXmark }
 import { createContext, createMemo, createSignal, ParentComponent, Setter, useContext, VoidComponent } from 'solid-js'
 import styles from './Header.module.scss'
 import Logo from './Logo'
-import kretalogo from '/assets/icons/kreta.png'
+import kretalogo from '~/assets/icons/kreta.png'
 
 const DropdownContext = createContext<Setter<string[]>>()
 

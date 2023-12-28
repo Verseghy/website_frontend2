@@ -1,7 +1,7 @@
 import { Component } from 'solid-js'
 import Banners from '~/components/Banners'
 import CardGrid from '~/components/CardGrid'
-import previewImage from '/assets/preview_image.png'
+import previewImage from '~/assets/preview_image.png'
 import styles from './Home.module.scss'
 import { Meta } from '@solidjs/meta'
 import { createAsync, RouteSectionProps } from '@solidjs/router'
