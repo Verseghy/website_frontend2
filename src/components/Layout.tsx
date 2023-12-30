@@ -7,7 +7,6 @@ const Layout: ParentComponent = (props) => {
   let ref: HTMLElement | undefined
 
   const skipNav = () => {
-    console.log('skip nav', ref)
     ref?.focus()
   }
 
