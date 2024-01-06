@@ -4,30 +4,42 @@ import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { Connection, PageInfo } from '~/models/connection'
 import { Post } from '~/models/post'
 
-const POSTS_PER_PAGE = 21
+const NUM_POSTS_PER_PAGE = 21
+const NUM_FEATURED_POSTS = 20
 
-const QUERY = gql`
-  query Posts($last: Int) {
-    posts(last: $last) {
-      edges {
-        node {
+const QUERY_POSTS_FRAGMENT = gql`
+  fragment PostsFragment on PostConnection {
+    edges {
+      node {
+        id
+        title
+        description
+        color
+        author {
+          name
+          image
+        }
+        date
+        indexImage
+        labels {
           id
-          title
-          description
+          name
           color
-          author {
-            name
-            image
-          }
-          date
-          indexImage
-          labels {
-            id
-            name
-            color
-          }
         }
       }
+    }
+  }
+`
+
+const QUERY_INITIAL = gql`
+  ${QUERY_POSTS_FRAGMENT}
+
+  query Posts($last: Int, $numFeaturedPosts: Int) {
+    featuredPosts: posts(featured: true, last: $numFeaturedPosts) {
+      ...PostsFragment,
+    }
+    posts(last: $last) {
+      ...PostsFragment,
       pageInfo {
         endCursor
         hasPreviousPage
@@ -36,26 +48,31 @@ const QUERY = gql`
   }
 `
 
-export type PageInfo = {
-  endCursor: string
-  hasPreviousPage: boolean
+export type HomeData = {
+  featuredPosts: Post[]
+  posts: Post[]
 }
 
-export const queryHomePage = cache(async (endCursor?: string): Promise<Post[]> => {
+export const queryHomePage = cache(async (endCursor?: string): Promise<HomeData> => {
   type Response = {
+    featuredPosts: Connection<Post>
     posts: Connection<Post, PageInfo>
   }
 
-  const response = await request<Response>(GRAPHQL_BACKEND_URL, QUERY, {
+  const response = await request<Response>(GRAPHQL_BACKEND_URL, QUERY_INITIAL, {
     variables: {
-      last: POSTS_PER_PAGE,
+      last: NUM_POSTS_PER_PAGE,
+      numFeaturedPosts: NUM_FEATURED_POSTS,
       before: endCursor ?? undefined,
     },
   })
 
   // pageInfo = response.posts.pageInfo
 
-  return response.posts.edges.map((e) => e.node)
+  return {
+    featuredPosts: response.featuredPosts.edges.map((e) => e.node),
+    posts: response.posts.edges.map((e) => e.node),
+  }
 }, 'Home.queryHomePage')
 
 export const loadHomePage: RouteLoadFunc = () => {
