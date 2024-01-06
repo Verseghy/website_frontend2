@@ -1,5 +1,5 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { cache, Params, RouteLoadFunc } from '@solidjs/router'
+import { Params, RouteLoadFunc, cache } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { Connection, PageInfo } from '~/models/connection'
 import { Post } from '~/models/post'

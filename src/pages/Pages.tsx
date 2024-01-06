@@ -1,5 +1,5 @@
 import { Meta } from '@solidjs/meta'
-import { createAsync, RouteSectionProps } from '@solidjs/router'
+import { RouteSectionProps, createAsync } from '@solidjs/router'
 import { Component, Show } from 'solid-js'
 import PageRenderer from '~/components/PageRenderer'
 import Title from '~/components/Title'

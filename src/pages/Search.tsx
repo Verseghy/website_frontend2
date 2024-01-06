@@ -1,4 +1,4 @@
-import { createAsync, Navigate, RouteSectionProps } from '@solidjs/router'
+import { Navigate, RouteSectionProps, createAsync } from '@solidjs/router'
 import { Component, Show } from 'solid-js'
 import CardGrid from '~/components/CardGrid'
 import Title from '~/components/Title'

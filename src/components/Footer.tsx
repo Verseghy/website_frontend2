@@ -1,12 +1,12 @@
-import { VoidComponent } from 'solid-js'
-import { VERSION } from '~/constants'
-import styles from './Footer.module.scss'
+import { A } from '@solidjs/router'
 import { FaBrandsFacebookF, FaBrandsGithub } from 'solid-icons/fa'
-import Logo from './Logo'
+import { VoidComponent } from 'solid-js'
+import eugy from '~/assets/icons/eugy.png'
 import kk from '~/assets/icons/kk-logo.webp'
 import kreta from '~/assets/icons/kreta.png'
-import eugy from '~/assets/icons/eugy.png'
-import { A } from '@solidjs/router'
+import { VERSION } from '~/constants'
+import styles from './Footer.module.scss'
+import Logo from './Logo'
 
 const Footer: VoidComponent = () => {
   return (

@@ -1,17 +1,17 @@
 // @refresh reload
 
-import { ErrorBoundary, lazy, Suspense } from 'solid-js'
+import { Meta, MetaProvider } from '@solidjs/meta'
+import { RouteDefinition, Router } from '@solidjs/router'
 import 'normalize.css'
+import { ErrorBoundary, Suspense, lazy } from 'solid-js'
 import previewImage from '~/assets/preview_image.png'
-import '~/scss/global.scss'
 import Layout from '~/components/Layout'
 import Title from '~/components/Title'
-import { RouteDefinition, Router } from '@solidjs/router'
-import { Meta, MetaProvider } from '@solidjs/meta'
+import '~/scss/global.scss'
 import { loadHomePage } from './data/home.data'
+import { loadPagesPage } from './data/pages.data'
 import { loadPost } from './data/post.data'
 import { loadSearchPage } from './data/search.data'
-import { loadPagesPage } from './data/pages.data'
 
 const ROUTES: RouteDefinition[] = [
   {
@@ -37,7 +37,11 @@ const ROUTES: RouteDefinition[] = [
       },
       {
         path: '/:type/:value',
-        component: lazy(() => import('~/pages/Search').then((c) => ({ default: c.SearchPageRedirect }))),
+        component: lazy(() =>
+          import('~/pages/Search').then((c) => ({
+            default: c.SearchPageRedirect,
+          }))
+        ),
         load: loadSearchPage,
       },
     ],

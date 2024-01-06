@@ -1,14 +1,14 @@
+import { Meta } from '@solidjs/meta'
+import { RouteSectionProps, createAsync } from '@solidjs/router'
+import { formatISO } from 'date-fns'
 import { Component, For, Show } from 'solid-js'
-import styles from './Post.module.scss'
-import Title from '~/components/Title'
-import Label from '~/components/Label'
-import PageRenderer from '~/components/PageRenderer'
 import FormattedDate from '~/components/FormattedDate'
 import ImageViewer from '~/components/ImageViewer'
-import { createAsync, RouteSectionProps } from '@solidjs/router'
-import { Meta } from '@solidjs/meta'
+import Label from '~/components/Label'
+import PageRenderer from '~/components/PageRenderer'
+import Title from '~/components/Title'
 import { queryPostById } from '~/data/post.data'
-import { formatISO } from 'date-fns'
+import styles from './Post.module.scss'
 
 // eslint-disable-next-line solid/no-destructure
 const PostPage: Component<RouteSectionProps> = ({ params }) => {

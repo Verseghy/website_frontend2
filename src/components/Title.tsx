@@ -1,5 +1,5 @@
-import { VoidComponent } from 'solid-js'
 import { Meta, Title as TitleMeta } from '@solidjs/meta'
+import { VoidComponent } from 'solid-js'
 
 const BASE_TITLE = 'Verseghy Ferenc Gimnázium'
 

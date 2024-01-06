@@ -1,7 +1,7 @@
 import { For, VoidComponent } from 'solid-js'
 import { Post } from '~/models/post'
-import PostCard from './PostCard'
 import styles from './CardGrid.module.scss'
+import PostCard from './PostCard'
 
 export type CardGridProps = {
   posts: Post[] | undefined

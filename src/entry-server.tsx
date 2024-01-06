@@ -1,4 +1,4 @@
-import { createHandler, StartServer } from '@solidjs/start/server'
+import { StartServer, createHandler } from '@solidjs/start/server'
 import favicon from '~/assets/favicon.ico'
 
 export default createHandler(() => (

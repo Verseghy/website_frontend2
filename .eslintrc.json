@@ -10,9 +10,6 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "solid", "prettier"],
-  "rules": {
-    "prettier/prettier": "error"
-  },
+  "plugins": ["@typescript-eslint", "solid"],
   "ignorePatterns": ["node_modules/", "dist/"]
 }
