@@ -15,7 +15,7 @@ const Title: VoidComponent<TitleProps> = (props) => {
 
   const metaTitle = () => {
     if (!props.title) return BASE_TITLE
-    return props.title!
+    return props.title
   }
 
   return (
