@@ -1,8 +1,8 @@
 import { gql, request } from '@solid-primitives/graphql'
 import { cache, Params, RouteLoadFunc } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
+import { Connection, PageInfo } from '~/models/connection'
 import { Post } from '~/models/post'
-import { PageInfo } from './home.data'
 
 const FRAGMENT = gql`
   fragment Posts on PostConnection {
@@ -107,12 +107,7 @@ const queryAuthor = async (authorID: number) => {
 const queryLabel = async (labelID: number) => {
   type Response = {
     label: {
-      posts: {
-        edges: {
-          node: Post
-        }[]
-        pageInfo: PageInfo
-      }
+      posts: Connection<PageInfo>
     }
   }
 

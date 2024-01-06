@@ -1,6 +1,7 @@
 import { gql, request } from '@solid-primitives/graphql'
 import { cache, RouteLoadFunc } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
+import { Connection, PageInfo } from '~/models/connection'
 import { Post } from '~/models/post'
 
 const POSTS_PER_PAGE = 21
@@ -42,12 +43,7 @@ export type PageInfo = {
 
 export const queryHomePage = cache(async (endCursor?: string): Promise<Post[]> => {
   type Response = {
-    posts: {
-      edges: {
-        node: Post
-      }[]
-      pageInfo: PageInfo
-    }
+    posts: Connection<Post, PageInfo>
   }
 
   const response = await request<Response>(GRAPHQL_BACKEND_URL, QUERY, {
