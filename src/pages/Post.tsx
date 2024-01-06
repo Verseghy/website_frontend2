@@ -8,6 +8,7 @@ import ImageViewer from '~/components/ImageViewer'
 import { createAsync, RouteSectionProps } from '@solidjs/router'
 import { Meta } from '@solidjs/meta'
 import { queryPostById } from '~/data/post.data'
+import { formatISO } from 'date-fns'
 
 // eslint-disable-next-line solid/no-destructure
 const PostPage: Component<RouteSectionProps> = ({ params }) => {
@@ -28,6 +29,7 @@ const PostPage: Component<RouteSectionProps> = ({ params }) => {
           <Meta property="og:author" content={data()!.author!.name} />
         </Show>
         <Meta property="og:type" content="article" />
+        <Meta property="article:published_time" content={formatISO(data()!.date)} />
         <Meta property="twitter:card" content="summary" />
 
         <article class={styles.container}>
