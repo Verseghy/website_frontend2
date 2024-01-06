@@ -2,11 +2,12 @@
 
 import { ErrorBoundary, lazy, Suspense } from 'solid-js'
 import 'normalize.css'
+import previewImage from '~/assets/preview_image.png'
 import '~/scss/global.scss'
 import Layout from '~/components/Layout'
 import Title from '~/components/Title'
 import { RouteDefinition, Router } from '@solidjs/router'
-import { MetaProvider } from '@solidjs/meta'
+import { Meta, MetaProvider } from '@solidjs/meta'
 import { loadHomePage } from './data/home.data'
 import { loadPost } from './data/post.data'
 import { loadSearchPage } from './data/search.data'
@@ -74,6 +75,12 @@ export default function App() {
       <Suspense>
         <ErrorBoundary fallback={() => null}>
           <Title />
+          <Meta name="og:site_name" content="Verseghy Ferenc Gimnázium" />
+          <Meta name="og:type" content="website" />
+          <Meta name="og:locale" content="hu_HU" />
+          <Meta name="og:description" content="A szolnoki Verseghy Ferenc Gimnázium weboldala" />
+          <Meta name="og:image" content={previewImage} />
+
           <Router root={Layout}>{ROUTES}</Router>
         </ErrorBoundary>
       </Suspense>
