@@ -19,6 +19,7 @@ const HomePage: Component<RouteSectionProps> = () => {
       <Meta name="twitter:card" content="summary" />
 
       <div class={styles.container}>
+        <p>Legfrissebb hírek</p>
         <CardGrid posts={data()?.posts} />
         <Banners />
       </div>
