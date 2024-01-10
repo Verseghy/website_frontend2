@@ -36,6 +36,7 @@ const Footer: VoidComponent = () => {
             <A href="." class={styles.disabled} tabIndex={-1}>
               Oldaltérkép
             </A>
+            <A href="/pages/akadalymentesitesi-nyilatkozat">Akadálymentesítési nyilatkozat</A>
           </div>
           <div class={styles.block}>
             <h4>KRÉTA</h4>
