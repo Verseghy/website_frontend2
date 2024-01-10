@@ -11,30 +11,30 @@
   "devDependencies": {
     "@types/color": "^3.0.6",
     "@types/dompurify": "^3.0.5",
-    "@types/node": "^18.19.3",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
-    "@typescript-eslint/parser": "^6.15.0",
-    "esbuild": "^0.14.54",
+    "@types/node": "^20.10.8",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "esbuild": "^0.19.11",
     "eslint": "^8.56.0",
-    "eslint-plugin-solid": "^0.13.0",
-    "postcss": "^8.4.32",
-    "sass": "^1.69.5",
-    "typescript": "^4.9.5",
-    "vite": "^4.5.1"
+    "eslint-plugin-solid": "^0.13.1",
+    "postcss": "^8.4.33",
+    "sass": "^1.69.7",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11"
   },
   "dependencies": {
-    "@biomejs/biome": "^1.4.1",
+    "@biomejs/biome": "^1.5.0",
     "@solid-primitives/graphql": "^2.0.1",
     "@solidjs/meta": "^0.29.3",
-    "@solidjs/router": "^0.10.5",
-    "@solidjs/start": "^0.4.2",
+    "@solidjs/router": "^0.10.7",
+    "@solidjs/start": "^0.4.5",
     "color": "^4.2.3",
-    "date-fns": "^3.0.6",
-    "dompurify": "^3.0.6",
+    "date-fns": "^3.2.0",
+    "dompurify": "^3.0.8",
     "normalize.css": "^8.0.1",
     "solid-icons": "^1.1.0",
-    "solid-js": "^1.8.7",
-    "vinxi": "^0.0.54"
+    "solid-js": "^1.8.9",
+    "vinxi": "^0.1.1"
   },
   "engines": {
     "node": ">=18"
