@@ -47,6 +47,10 @@ const ROUTES: RouteDefinition[] = [
     ],
   },
   {
+    path: '/canteen',
+    component: lazy(() => import('~/pages/Canteen')),
+  },
+  {
     path: '/_debug',
     component: lazy(() => import('~/pages/Debug')),
   },
