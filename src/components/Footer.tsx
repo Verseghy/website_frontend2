@@ -56,8 +56,7 @@ const Footer: VoidComponent = () => {
             <a href="mailto:contact@zoltanszepesi.com">contact@zoltanszepesi.com</a>
           </span>
           <div class={styles.right}>
-            {/* TODO: facebook link */}
-            <A href=".">
+            <A href="https://www.facebook.com/verseghyferencgimnazium" target="_blank">
               <FaBrandsFacebookF class={styles.icon} />
             </A>
             <A href="https://github.com/Verseghy/website_frontend2" target="_blank">
