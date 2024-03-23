@@ -87,7 +87,7 @@ const ImageViewer: VoidComponent<ImageViewerProps> = (props) => {
 
               return (
                 <figure aria-label={label()} aria-roledescription="item" inert={index() != activeIndex()}>
-                  <img src={image} alt={label()} loading="lazy" />
+                  <img src={image} alt={label()} loading="lazy" fetchpriority={index() === 0 ? 'high' : 'low'} />
                 </figure>
               )
             }}
