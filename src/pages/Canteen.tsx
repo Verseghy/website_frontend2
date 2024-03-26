@@ -25,7 +25,7 @@ const CanteenWeek: VoidComponent<CanteenWeekProps> = (props) => {
         <For each={dataWithDays()}>
           {(day) => (
             <li>
-              <span>{day.day}</span>
+              <h3>{day.day}</h3>
               <ul>
                 <Show when={(day.menus.length as number) === 0}>
                   <li>Nincs megadva</li>
