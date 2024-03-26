@@ -12,6 +12,12 @@ const ImageViewer: VoidComponent<ImageViewerProps> = (props) => {
   let elements: HTMLElement[] = []
 
   const [activeIndex, setActiveIndex] = createSignal(0)
+  const [filteredSources, setFilteredSources] = createSignal<string[]>([])
+
+  const images = () => {
+    const filtered = filteredSources()
+    return props.images.filter((img) => !filtered.includes(img))
+  }
 
   const scroll = () => {
     untrack(() => {
@@ -22,7 +28,7 @@ const ImageViewer: VoidComponent<ImageViewerProps> = (props) => {
   }
 
   const onClickLeft = () => {
-    setActiveIndex((i) => Math.min(i - 1, props.images.length - 1))
+    setActiveIndex((i) => Math.min(i - 1, images().length - 1))
     scroll()
   }
 
@@ -50,8 +56,14 @@ const ImageViewer: VoidComponent<ImageViewerProps> = (props) => {
     )
   })
 
+  const onError = (event: Event) => {
+    const img = event.target as HTMLImageElement
+    setFilteredSources((srcs) => [...srcs, img.src])
+    console.error('Filtered out source:', img.src)
+  }
+
   createEffect(
-    on([() => props.images], () => {
+    on([() => images()], () => {
       elements.forEach((e) => observer.unobserve(e))
       elements = Array.from(scroller!.querySelectorAll('figure'))
       elements.forEach((e) => observer.observe(e))
@@ -75,19 +87,25 @@ const ImageViewer: VoidComponent<ImageViewerProps> = (props) => {
           onClick={onClickRight}
           title="Következő kép"
           aria-label="Következő kép"
-          disabled={activeIndex() == props.images.length - 1}
+          disabled={activeIndex() == images().length - 1}
         >
           <FaSolidChevronLeft size="4rem" aria-hidden="true" />
         </button>
 
         <div class={styles.scroller} role="group" aria-label="Képnézegető" aria-live="polite" ref={scroller}>
-          <For each={props.images}>
+          <For each={images()}>
             {(image, index) => {
-              const label = () => `${index() + 1}/${props.images.length}`
+              const label = () => `${index() + 1}/${images().length}`
 
               return (
                 <figure aria-label={label()} aria-roledescription="item" inert={index() != activeIndex()}>
-                  <img src={image} alt={label()} loading="lazy" fetchpriority={index() === 0 ? 'high' : 'low'} />
+                  <img
+                    src={image}
+                    alt={label()}
+                    loading="lazy"
+                    fetchpriority={index() === 0 ? 'high' : 'low'}
+                    onError={onError}
+                  />
                 </figure>
               )
             }}
