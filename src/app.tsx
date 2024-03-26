@@ -12,6 +12,7 @@ import { loadHomePage } from './data/home.data'
 import { loadPage } from './data/pages.data'
 import { loadPost } from './data/post.data'
 import { loadSearchPage } from './data/search.data'
+import { loadInformationMenu } from './data/information.data'
 
 const ROUTES: RouteDefinition[] = [
   {
@@ -49,6 +50,25 @@ const ROUTES: RouteDefinition[] = [
   {
     path: '/canteen',
     component: lazy(() => import('~/pages/Canteen')),
+  },
+  {
+    path: '/information',
+    children: [
+      {
+        path: '/',
+        component: lazy(() => import('~/pages/Information')),
+      },
+      {
+        path: '/:slug',
+        component: lazy(() =>
+          import('~/pages/Information').then((c) => ({
+            default: c.InformationPageWithSlug,
+          }))
+        ),
+        load: loadPage,
+      },
+    ],
+    load: loadInformationMenu,
   },
   {
     path: '/_debug',

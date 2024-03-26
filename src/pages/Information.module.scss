@@ -1,0 +1,11 @@
+.container {
+  width: min(var(--page-width), 100% - 2 * var(--page-padding));
+  margin-inline: auto;
+  display: grid;
+  grid-gap: 2rem;
+  margin-top: 3rem;
+
+  @include lg {
+    grid-template-columns: 25rem minmax(0, 1fr);
+  }
+}
