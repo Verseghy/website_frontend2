@@ -9,7 +9,7 @@ import Layout from '~/components/Layout'
 import Title from '~/components/Title'
 import '~/scss/global.scss'
 import { loadHomePage } from './data/home.data'
-import { loadPagesPage } from './data/pages.data'
+import { loadPage } from './data/pages.data'
 import { loadPost } from './data/post.data'
 import { loadSearchPage } from './data/search.data'
 
@@ -25,7 +25,7 @@ const ROUTES: RouteDefinition[] = [
   {
     path: '/pages/:slug',
     component: lazy(() => import('~/pages/Pages')),
-    load: loadPagesPage,
+    load: loadPage,
   },
   {
     path: '/search',

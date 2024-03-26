@@ -34,6 +34,6 @@ export const queryPageByID = cache(async (slug: string): Promise<Page> => {
   return response.page
 }, 'Pages.queryPageByID')
 
-export const loadPagesPage: RouteLoadFunc = ({ params }) => {
+export const loadPage: RouteLoadFunc = ({ params }) => {
   void queryPageByID(params.slug)
 }
