@@ -9,6 +9,7 @@
     "jsx": "preserve",
     "strict": true,
     "baseUrl": "./",
+    "types": ["vinxi/client", "vite/client"],
     "paths": {
       "~/*": ["./src/*"]
     }
