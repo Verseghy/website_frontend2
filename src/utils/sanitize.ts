@@ -30,6 +30,13 @@ function sanitize(purify: DOMPurifyI, parser: DOMParser, dirty: string): string 
 
   fixURLOrigin(dom)
 
+  purify.addHook('afterSanitizeAttributes', function (node) {
+    if (node.tagName === 'A') {
+      node.setAttribute('target', '_blank')
+      node.setAttribute('rel', 'noopener')
+    }
+  })
+
   const clean = purify.sanitize(dom.body, {
     ADD_TAGS: ['iframe'],
   })
