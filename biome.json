@@ -20,7 +20,7 @@
   },
   "javascript": {
     "formatter": {
-      "trailingComma": "es5",
+      "trailingCommas": "es5",
       "arrowParentheses": "always",
       "quoteStyle": "single",
       "jsxQuoteStyle": "double",
