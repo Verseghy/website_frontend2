@@ -15,6 +15,7 @@
     font-size: 2.4rem;
     line-height: 1.2;
     margin: 3rem auto 2rem;
+    text-wrap: balance;
 
     @include lg {
       font-size: 3.6rem;
@@ -28,6 +29,12 @@
     margin: 0 auto 2.1rem;
   }
 
+  p,
+  li,
+  figcaption {
+    text-wrap: pretty;
+  }
+
   h1,
   h2,
   h3,
@@ -38,6 +45,7 @@
     max-width: var(--content-page-width);
     font-weight: 700;
     font-family: var(--text-family-content-heading);
+    text-wrap: balance;
   }
 
   h1 {
