@@ -78,16 +78,16 @@
   form {
     --height: 4.8rem;
 
-    @include lg {
-      --height: 4rem;
-    }
-
     display: block;
     height: var(--height);
     background: var(--header-search-background);
     border-radius: 0.3rem;
     margin: 0.4rem;
     margin-right: 0;
+
+    @include lg {
+      --height: 4rem;
+    }
 
     &:focus-within {
       outline: 2px solid #000;

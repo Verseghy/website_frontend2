@@ -46,10 +46,6 @@ body {
   --page-width: 1200px;
   --page-padding: 1rem;
 
-  @include md {
-    --page-padding: 2rem;
-  }
-
   --content-page-width: 70rem;
   --content-page-width-wide: 100rem;
 
@@ -94,4 +90,8 @@ body {
 
   --banners-border-radius: 0.8rem;
   --banners-padding: 3rem;
+
+  @include md {
+    --page-padding: 2rem;
+  }
 }
