@@ -13,6 +13,7 @@ import { loadPage } from './data/pages.data'
 import { loadPost } from './data/post.data'
 import { loadSearchPage } from './data/search.data'
 import { loadInformationMenu } from './data/information.data'
+import { loadColleaguesPage } from './data/colleagues.data'
 
 const ROUTES: RouteDefinition[] = [
   {
@@ -69,6 +70,11 @@ const ROUTES: RouteDefinition[] = [
       },
     ],
     load: loadInformationMenu,
+  },
+  {
+    path: '/misc/colleagues',
+    component: lazy(() => import('~/pages/Colleagues')),
+    load: loadColleaguesPage,
   },
   {
     path: '/_debug',

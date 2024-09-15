@@ -1,0 +1,54 @@
+.container {
+  width: min(var(--page-width), 100% - 2 * var(--page-padding));
+  margin-inline: auto;
+}
+
+.category {
+  margin-top: 3rem;
+
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    @include md {
+      grid-template-columns: repeat(auto-fit, minmax(45rem, 1fr));
+    }
+  }
+}
+
+.colleague {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  background-color: var(--color-surface1);
+  border-radius: 0.8rem;
+  padding: 1rem;
+
+  @include md {
+    grid-template-columns: min-content 1fr;
+  }
+
+  img {
+    width: 10rem;
+    border-radius: 0.4rem;
+    aspect-ratio: 1 / 1.42;
+  }
+
+  .name {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .subjects,
+  .jobs,
+  .roles {
+    margin-bottom: 1rem;
+  }
+
+}
