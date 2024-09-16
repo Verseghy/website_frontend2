@@ -10,18 +10,16 @@ type ColleagueProps = {
 }
 
 const Colleague: VoidComponent<ColleagueProps> = (props) => {
-  const colleague = props.colleague
-
   return (
     <div class={styles.colleague}>
       {/* <img src={colleague.image} alt={colleague.name} /> */}
-      <img src={colleague.image} alt="" />
+      <img src={props.colleague.image} alt="" />
       <div>
-        <p class={styles.name}>{colleague.name}</p>
-        <p class={styles.subjects}>{colleague.subjects}</p>
-        <p class={styles.jobs}>{colleague.jobs}</p>
-        <p class={styles.roles}>{colleague.roles}</p>
-        <p>{colleague.awards}</p>
+        <p class={styles.name}>{props.colleague.name}</p>
+        <p class={styles.subjects}>{props.colleague.subjects}</p>
+        <p class={styles.jobs}>{props.colleague.jobs}</p>
+        <p class={styles.roles}>{props.colleague.roles}</p>
+        <p>{props.colleague.awards}</p>
       </div>
     </div>
   )
@@ -32,13 +30,11 @@ type CategoryProps = {
 }
 
 const Category: VoidComponent<CategoryProps> = (props) => {
-  const category = props.category
-
   return (
     <section class={styles.category}>
-      <h2>{category.name}</h2>
+      <h2>{props.category.name}</h2>
       <div class={styles.grid}>
-        <For each={category.colleagues}>{(colleague) => <Colleague colleague={colleague} />}</For>
+        <For each={props.category.colleagues}>{(colleague) => <Colleague colleague={colleague} />}</For>
       </div>
     </section>
   )
