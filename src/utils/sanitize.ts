@@ -18,7 +18,7 @@ function fixURLOrigin(dom: Document) {
 
       img.src = url.href
     } catch (e) {
-      console.error(`Failed to parse url: '${img.src}'`)
+      console.error(`Failed to parse url: '${img.src}'`, e)
     }
   }
 }

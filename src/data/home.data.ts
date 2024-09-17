@@ -1,5 +1,5 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { RouteLoadFunc, cache } from '@solidjs/router'
+import { RoutePreloadFunc, cache } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { Connection, PageInfo } from '~/models/connection'
 import { Post } from '~/models/post'
@@ -75,6 +75,6 @@ export const queryHomePage = cache(async (endCursor?: string): Promise<HomeData>
   }
 }, 'Home.queryHomePage')
 
-export const loadHomePage: RouteLoadFunc = () => {
+export const loadHomePage: RoutePreloadFunc = () => {
   void queryHomePage()
 }

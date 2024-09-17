@@ -1,5 +1,5 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { RouteLoadFunc, cache } from '@solidjs/router'
+import { cache, RoutePreloadFunc } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { Category, Colleague } from '~/models/colleague'
 
@@ -42,10 +42,10 @@ export const queryColleaguesPage = cache(async (): Promise<Category[]> => {
 
   const colleagues = Object.groupBy(response.colleagues, ({ category }) => category)
 
-  let categories = []
+  const categories = []
 
   for (const [key, value] of Object.entries(colleagues)) {
-    let colleagues = value ?? []
+    const colleagues = value ?? []
 
     colleagues.sort((a, b) => {
       if (a.name === HEAD_TEACHER) {
@@ -66,6 +66,6 @@ export const queryColleaguesPage = cache(async (): Promise<Category[]> => {
   return categories
 }, 'Colleagues.queryColleaguesPage')
 
-export const loadColleaguesPage: RouteLoadFunc = () => {
+export const loadColleaguesPage: RoutePreloadFunc = () => {
   void queryColleaguesPage()
 }

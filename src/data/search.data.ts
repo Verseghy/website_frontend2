@@ -1,5 +1,5 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { Params, RouteLoadFunc, cache } from '@solidjs/router'
+import { Params, RoutePreloadFunc, cache } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { Connection, PageInfo } from '~/models/connection'
 import { Post } from '~/models/post'
@@ -146,6 +146,6 @@ export const querySearchPage = cache(async (query: Params) => {
   return []
 }, 'Search.querySearchPage')
 
-export const loadSearchPage: RouteLoadFunc = ({ location }) => {
+export const loadSearchPage: RoutePreloadFunc = ({ location }) => {
   void querySearchPage(location.query)
 }

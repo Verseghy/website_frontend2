@@ -1,5 +1,5 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { RouteLoadFunc, cache, redirect } from '@solidjs/router'
+import { cache, redirect, RoutePreloadFunc } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { Post } from '~/models/post'
 
@@ -43,12 +43,13 @@ export const queryPostById = cache(async (id: string): Promise<Post> => {
   })
 
   if (response.post === null) {
+    // eslint-disable-next-line @typescript-eslint/only-throw-error
     throw redirect('/404')
   }
 
   return response.post
 }, 'Post.queryPostById')
 
-export const loadPost: RouteLoadFunc = ({ params }) => {
+export const loadPost: RoutePreloadFunc = ({ params }) => {
   void queryPostById(params.id)
 }

@@ -22,12 +22,12 @@ const ROUTES: RouteDefinition[] = [
       id: (id: string) => Number.isSafeInteger(parseInt(id)),
     },
     component: lazy(() => import('~/pages/Post')),
-    load: loadPost,
+    preload: loadPost,
   },
   {
     path: '/pages/:slug',
     component: lazy(() => import('~/pages/Pages')),
-    load: loadPage,
+    preload: loadPage,
   },
   {
     path: '/search',
@@ -35,7 +35,7 @@ const ROUTES: RouteDefinition[] = [
       {
         path: '/',
         component: lazy(() => import('~/pages/Search')),
-        load: loadSearchPage,
+        preload: loadSearchPage,
       },
       {
         path: '/:type/:value',
@@ -44,7 +44,7 @@ const ROUTES: RouteDefinition[] = [
             default: c.SearchPageRedirect,
           }))
         ),
-        load: loadSearchPage,
+        preload: loadSearchPage,
       },
     ],
   },
@@ -66,15 +66,15 @@ const ROUTES: RouteDefinition[] = [
             default: c.InformationPageWithSlug,
           }))
         ),
-        load: loadPage,
+        preload: loadPage,
       },
     ],
-    load: loadInformationMenu,
+    preload: loadInformationMenu,
   },
   {
     path: '/misc/colleagues',
     component: lazy(() => import('~/pages/Colleagues')),
-    load: loadColleaguesPage,
+    preload: loadColleaguesPage,
   },
   {
     path: '/_debug',
@@ -83,7 +83,7 @@ const ROUTES: RouteDefinition[] = [
   {
     path: '/',
     component: lazy(() => import('~/pages/Home')),
-    load: loadHomePage,
+    preload: loadHomePage,
   },
   {
     path: '/*',

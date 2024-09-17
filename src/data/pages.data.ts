@@ -1,5 +1,5 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { RouteLoadFunc, cache, redirect } from '@solidjs/router'
+import { cache, redirect, RoutePreloadFunc } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { Page } from '~/models/page'
 
@@ -28,12 +28,13 @@ export const queryPageByID = cache(async (slug: string): Promise<Page> => {
   })
 
   if (response.page === null) {
+    // eslint-disable-next-line @typescript-eslint/only-throw-error
     throw redirect('/404')
   }
 
   return response.page
 }, 'Pages.queryPageByID')
 
-export const loadPage: RouteLoadFunc = ({ params }) => {
+export const loadPage: RoutePreloadFunc = ({ params }) => {
   void queryPageByID(params.slug)
 }
