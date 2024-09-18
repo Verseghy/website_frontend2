@@ -35,7 +35,7 @@
     "date-fns": "^4.0.0",
     "dompurify": "^3.1.6",
     "jsdom": "^25.0.0",
-    "normalize.css": "^8.0.1",
+    "modern-normalize": "^3.0.1",
     "solid-icons": "^1.1.0",
     "solid-js": "^1.8.22",
     "vinxi": "^0.4.3"

@@ -2,7 +2,7 @@
 
 import { Meta, MetaProvider } from '@solidjs/meta'
 import { RouteDefinition, Router } from '@solidjs/router'
-import 'normalize.css'
+import 'modern-normalize/modern-normalize.css'
 import { ErrorBoundary, Suspense, lazy } from 'solid-js'
 import previewImage from '~/assets/preview_image.png'
 import Layout from '~/components/Layout'
