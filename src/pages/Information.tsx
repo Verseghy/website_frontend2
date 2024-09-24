@@ -8,7 +8,7 @@ import PageRenderer from '~/components/PageRenderer'
 import { InformationMenu } from '~/components/InformationMenu'
 
 const InformationPage: Component<RouteSectionProps> = (props) => {
-  const data = createAsync(queryInformationMenu)
+  const data = createAsync(() => queryInformationMenu())
 
   const href = (data: MenuItem[]) => {
     for (const item of data) {
@@ -28,7 +28,7 @@ const InformationPage: Component<RouteSectionProps> = (props) => {
 export default InformationPage
 
 export const InformationPageWithSlug: Component<RouteSectionProps> = (props) => {
-  const menu = createAsync(queryInformationMenu)
+  const menu = createAsync(() => queryInformationMenu())
   const page = createAsync(() => queryPageByID(props.params.slug))
 
   return (
