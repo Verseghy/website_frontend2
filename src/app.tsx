@@ -8,12 +8,12 @@ import previewImage from '~/assets/preview_image.png'
 import Layout from '~/components/Layout'
 import Title from '~/components/Title'
 import '~/scss/global.scss'
+import { loadColleaguesPage } from './data/colleagues.data'
 import { loadHomePage } from './data/home.data'
+import { loadInformationMenu } from './data/information.data'
 import { loadPage } from './data/pages.data'
 import { loadPost } from './data/post.data'
 import { loadSearchPage } from './data/search.data'
-import { loadInformationMenu } from './data/information.data'
-import { loadColleaguesPage } from './data/colleagues.data'
 
 const ROUTES: RouteDefinition[] = [
   {

@@ -1,11 +1,11 @@
 import { Navigate, RouteSectionProps, createAsync } from '@solidjs/router'
 import { Component, Show } from 'solid-js'
+import { InformationMenu } from '~/components/InformationMenu'
+import PageRenderer from '~/components/PageRenderer'
 import { queryInformationMenu } from '~/data/information.data'
 import { queryPageByID } from '~/data/pages.data'
 import { MenuItem } from '~/models/information'
 import styles from './Information.module.scss'
-import PageRenderer from '~/components/PageRenderer'
-import { InformationMenu } from '~/components/InformationMenu'
 
 const InformationPage: Component<RouteSectionProps> = (props) => {
   const data = createAsync(() => queryInformationMenu())

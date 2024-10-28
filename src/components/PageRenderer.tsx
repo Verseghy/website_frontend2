@@ -1,6 +1,6 @@
 import { Show, VoidComponent } from 'solid-js'
-import styles from './PageRenderer.module.scss'
 import { getSanitizer } from '~/utils/sanitize'
+import styles from './PageRenderer.module.scss'
 
 export type PageRendererProps = {
   title?: string

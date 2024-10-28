@@ -1,6 +1,6 @@
 import js from '@eslint/js'
-import solid from 'eslint-plugin-solid/configs/recommended'
 import * as tsParser from '@typescript-eslint/parser'
+import solid from 'eslint-plugin-solid/configs/recommended'
 import ts from 'typescript-eslint'
 
 export default [

@@ -1,5 +1,5 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { cache, RoutePreloadFunc } from '@solidjs/router'
+import { RoutePreloadFunc, cache } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { Category, Colleague } from '~/models/colleague'
 
