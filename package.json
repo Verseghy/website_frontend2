@@ -4,7 +4,7 @@
     "dev": "vinxi dev",
     "build": "vinxi build",
     "start": "node ./.output/server/index.mjs",
-    "format": "biome format --write . && pnpm biome check --formatter-enabled=false --linter-enabled=false --organize-imports-enabled=true --write .",
+    "format": "biome format --write . && biome check --formatter-enabled=false --linter-enabled=false --organize-imports-enabled=true --write .",
     "lint": "eslint ."
   },
   "type": "module",
