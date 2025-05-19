@@ -1,5 +1,5 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { RoutePreloadFunc, cache, redirect } from '@solidjs/router'
+import { RoutePreloadFunc, query, redirect } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { Page } from '~/models/page'
 
@@ -16,7 +16,7 @@ const QUERY = gql`
   }
 `
 
-export const queryPageByID = cache(async (slug: string): Promise<Page> => {
+export const queryPageByID = query(async (slug: string): Promise<Page> => {
   type Response = {
     page: Page
   }

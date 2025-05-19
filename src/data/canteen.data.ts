@@ -1,5 +1,5 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { cache } from '@solidjs/router'
+import { query } from '@solidjs/router'
 import { addWeeks, getISOWeek, getISOWeekYear } from 'date-fns'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { Day } from '~/models/canteen'
@@ -25,7 +25,7 @@ const QUERY = gql`
 
 export type CanteenData = [Day[], Day[]]
 
-export const queryCanteen = cache(async (): Promise<CanteenData> => {
+export const queryCanteen = query(async (): Promise<CanteenData> => {
   const now = new Date()
   const nextWeek = addWeeks(now, 1)
 

@@ -1,5 +1,5 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { RoutePreloadFunc, cache, redirect } from '@solidjs/router'
+import { RoutePreloadFunc, query, redirect } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { Post } from '~/models/post'
 
@@ -29,7 +29,7 @@ const QUERY = gql`
   }
 `
 
-export const queryPostById = cache(async (id: string): Promise<Post> => {
+export const queryPostById = query(async (id: string): Promise<Post> => {
   const parsedID = Number(id)
 
   type Response = {

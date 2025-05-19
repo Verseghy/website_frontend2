@@ -1,5 +1,5 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { Params, RoutePreloadFunc, cache } from '@solidjs/router'
+import { Params, RoutePreloadFunc, query } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { Connection, PageInfo } from '~/models/connection'
 import { Post } from '~/models/post'
@@ -120,7 +120,7 @@ const queryLabel = async (labelID: number) => {
   return response.label.posts.edges.map((e) => e.node)
 }
 
-export const querySearchPage = cache(async (query: Params) => {
+export const querySearchPage = query(async (query: Params) => {
   if (query.term) {
     return await queryTerm(query.term)
   } else if (query.author) {

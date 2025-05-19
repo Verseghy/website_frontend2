@@ -1,4 +1,4 @@
-import DOMPurify, { type DOMPurifyI } from 'dompurify'
+import DOMPurify, { type DOMPurify as DOMPurifyI } from 'dompurify'
 import { JSDOM } from 'jsdom'
 import { isServer } from 'solid-js/web'
 import { IMAGE_ORIGIN } from '~/constants'

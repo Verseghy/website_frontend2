@@ -1,5 +1,5 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { RoutePreloadFunc, cache } from '@solidjs/router'
+import { RoutePreloadFunc, query } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { Category, Colleague } from '~/models/colleague'
 
@@ -28,7 +28,7 @@ const QUERY = gql`
   }
 `
 
-export const queryColleaguesPage = cache(async (): Promise<Category[]> => {
+export const queryColleaguesPage = query(async (): Promise<Category[]> => {
   type Response = {
     colleagues: Colleague[]
   }

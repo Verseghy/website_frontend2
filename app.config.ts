@@ -6,12 +6,13 @@ export default defineConfig({
     css: {
       preprocessorOptions: {
         scss: {
+          loadPaths: ['./src/scss/'],
           additionalData: (source: string, file: string) => {
             if (file.endsWith('import.scss') || file.endsWith('_breakpoints.scss')) {
               return source
             }
             return `
-            @use "./src/scss/import.scss" as *;
+            @use "import.scss" as *;
             ${source}
           `
           },
