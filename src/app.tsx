@@ -1,7 +1,7 @@
 // @refresh reload
 
 import { Meta, MetaProvider } from '@solidjs/meta'
-import { RouteDefinition, Router } from '@solidjs/router'
+import { type RouteDefinition, Router } from '@solidjs/router'
 import 'modern-normalize/modern-normalize.css'
 import { ErrorBoundary, Suspense, lazy } from 'solid-js'
 import previewImage from '~/assets/preview_image.png'

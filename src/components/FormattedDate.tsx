@@ -1,6 +1,6 @@
 import { format, isSameYear } from 'date-fns'
 import { hu } from 'date-fns/locale'
-import { VoidComponent } from 'solid-js'
+import type { VoidComponent } from 'solid-js'
 
 const FORMAT_OPTIONS = { locale: hu }
 

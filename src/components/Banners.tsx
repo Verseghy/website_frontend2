@@ -1,5 +1,5 @@
 import { A } from '@solidjs/router'
-import { VoidComponent } from 'solid-js'
+import type { VoidComponent } from 'solid-js'
 import bazis from '~/assets/banners/bazisintezmeny_logo.png'
 import hatartalanul from '~/assets/banners/hatartalanul.jpg'
 import ntp from '~/assets/banners/ntp.png'

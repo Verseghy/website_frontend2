@@ -1,8 +1,8 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { Params, RoutePreloadFunc, query } from '@solidjs/router'
+import { type Params, type RoutePreloadFunc, query } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
-import { Connection, PageInfo } from '~/models/connection'
-import { Post } from '~/models/post'
+import type { Connection, PageInfo } from '~/models/connection'
+import type { Post } from '~/models/post'
 
 const FRAGMENT = gql`
   fragment Posts on PostConnection {

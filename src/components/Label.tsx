@@ -1,7 +1,7 @@
 import { A } from '@solidjs/router'
 import Color from 'color'
-import { VoidComponent } from 'solid-js'
-import { Label } from '~/models/post'
+import type { VoidComponent } from 'solid-js'
+import type { Label } from '~/models/post'
 import styles from './Label.module.scss'
 
 export type LabelProps = {

@@ -1,5 +1,5 @@
-import { Navigate, RouteSectionProps, createAsync } from '@solidjs/router'
-import { Component, Show } from 'solid-js'
+import { Navigate, type RouteSectionProps, createAsync } from '@solidjs/router'
+import { type Component, Show } from 'solid-js'
 import CardGrid from '~/components/CardGrid'
 import Title from '~/components/Title'
 import { querySearchPage } from '~/data/search.data'

@@ -1,5 +1,5 @@
-import { For, VoidComponent } from 'solid-js'
-import { Post } from '~/models/post'
+import { For, type VoidComponent } from 'solid-js'
+import type { Post } from '~/models/post'
 import styles from './CardGrid.module.scss'
 import PostCard from './PostCard'
 
