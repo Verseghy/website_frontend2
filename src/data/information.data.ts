@@ -1,7 +1,7 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { RoutePreloadFunc, query } from '@solidjs/router'
+import { type RoutePreloadFunc, query } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
-import { MenuItem } from '~/models/information'
+import type { MenuItem } from '~/models/information'
 
 const QUERY_INFORMATION_MENU = gql`
   query InformationMenu {

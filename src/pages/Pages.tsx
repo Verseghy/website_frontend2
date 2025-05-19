@@ -1,6 +1,6 @@
 import { Meta } from '@solidjs/meta'
-import { RouteSectionProps, createAsync } from '@solidjs/router'
-import { Component, Show } from 'solid-js'
+import { type RouteSectionProps, createAsync } from '@solidjs/router'
+import { type Component, Show } from 'solid-js'
 import PageRenderer from '~/components/PageRenderer'
 import Title from '~/components/Title'
 import { queryPageByID } from '~/data/pages.data'

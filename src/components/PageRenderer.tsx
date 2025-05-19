@@ -1,4 +1,4 @@
-import { Show, VoidComponent } from 'solid-js'
+import { Show, type VoidComponent } from 'solid-js'
 import { getSanitizer } from '~/utils/sanitize'
 import styles from './PageRenderer.module.scss'
 

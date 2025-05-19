@@ -1,6 +1,6 @@
 import { A } from '@solidjs/router'
 import { FaBrandsFacebookF, FaBrandsGithub } from 'solid-icons/fa'
-import { VoidComponent } from 'solid-js'
+import type { VoidComponent } from 'solid-js'
 import eugy from '~/assets/icons/eugy.png'
 import kk from '~/assets/icons/kk-logo.webp'
 import kreta from '~/assets/icons/kreta.png'

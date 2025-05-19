@@ -1,7 +1,7 @@
-import { RouteSectionProps, createAsync } from '@solidjs/router'
-import { Component, For, Show, VoidComponent } from 'solid-js'
+import { type RouteSectionProps, createAsync } from '@solidjs/router'
+import { type Component, For, Show, type VoidComponent } from 'solid-js'
 import { queryCanteenPage } from '~/data/canteen.data'
-import { Day } from '~/models/canteen'
+import type { Day } from '~/models/canteen'
 import styles from './Canteen.module.scss'
 
 const DAYS = ['Hétfő', 'Kedd', 'Szerda', 'Csütörtök', 'Péntek']

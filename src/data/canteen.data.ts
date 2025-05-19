@@ -2,7 +2,7 @@ import { gql, request } from '@solid-primitives/graphql'
 import { type RoutePreloadFunc, query } from '@solidjs/router'
 import { addWeeks, getISOWeek, getISOWeekYear } from 'date-fns'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
-import { Day } from '~/models/canteen'
+import type { Day } from '~/models/canteen'
 
 const QUERY = gql`
   query CanteenTwoWeeks($year1: Int!, $week1: Int!, $year2: Int!, $week2: Int!) {

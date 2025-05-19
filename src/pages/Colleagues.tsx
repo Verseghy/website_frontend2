@@ -1,8 +1,8 @@
-import { RouteSectionProps, createAsync } from '@solidjs/router'
-import { Component, For, Show, VoidComponent } from 'solid-js'
+import { type RouteSectionProps, createAsync } from '@solidjs/router'
+import { type Component, For, Show, type VoidComponent } from 'solid-js'
 import Title from '~/components/Title'
 import { queryColleaguesPage } from '~/data/colleagues.data'
-import { Category as CategoryModel, Colleague as ColleagueModel } from '~/models/colleague'
+import type { Category as CategoryModel, Colleague as ColleagueModel } from '~/models/colleague'
 import styles from './Colleagues.module.scss'
 
 type ColleagueProps = {

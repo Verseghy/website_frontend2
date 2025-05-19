@@ -1,5 +1,5 @@
 import { FaSolidChevronLeft } from 'solid-icons/fa'
-import { For, VoidComponent, createEffect, createSignal, on, onMount, untrack } from 'solid-js'
+import { For, type VoidComponent, createEffect, createSignal, on, onMount, untrack } from 'solid-js'
 import styles from './ImageViewer.module.scss'
 
 export type ImageViewerProps = {

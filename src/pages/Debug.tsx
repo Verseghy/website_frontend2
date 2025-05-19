@@ -1,5 +1,5 @@
-import { RouteSectionProps } from '@solidjs/router'
-import { Component } from 'solid-js'
+import type { RouteSectionProps } from '@solidjs/router'
+import type { Component } from 'solid-js'
 import PageRenderer from '~/components/PageRenderer'
 import Title from '~/components/Title'
 

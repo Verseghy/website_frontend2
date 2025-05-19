@@ -1,6 +1,6 @@
 import { A } from '@solidjs/router'
-import { For, Show, VoidComponent } from 'solid-js'
-import { InternalOrExternalLinkMenuItem, MenuItem, PageLinkMenuItem } from '~/models/information'
+import { For, Show, type VoidComponent } from 'solid-js'
+import type { InternalOrExternalLinkMenuItem, MenuItem, PageLinkMenuItem } from '~/models/information'
 import styles from './InformationMenu.module.scss'
 
 export type InformationMenuProps = {

@@ -1,8 +1,8 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { RoutePreloadFunc, query } from '@solidjs/router'
+import { type RoutePreloadFunc, query } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
-import { Connection, PageInfo } from '~/models/connection'
-import { Post } from '~/models/post'
+import type { Connection, PageInfo } from '~/models/connection'
+import type { Post } from '~/models/post'
 
 const NUM_POSTS_PER_PAGE = 21
 const NUM_FEATURED_POSTS = 20

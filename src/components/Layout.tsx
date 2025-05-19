@@ -1,4 +1,4 @@
-import { ParentComponent } from 'solid-js'
+import type { ParentComponent } from 'solid-js'
 import Footer from './Footer'
 import Header from './Header'
 import styles from './Layout.module.scss'
