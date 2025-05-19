@@ -8,6 +8,7 @@ import previewImage from '~/assets/preview_image.png'
 import Layout from '~/components/Layout'
 import Title from '~/components/Title'
 import '~/scss/global.scss'
+import { loadCanteenPage } from './data/canteen.data'
 import { loadColleaguesPage } from './data/colleagues.data'
 import { loadHomePage } from './data/home.data'
 import { loadInformationMenu } from './data/information.data'
@@ -51,6 +52,7 @@ const ROUTES: RouteDefinition[] = [
   {
     path: '/canteen',
     component: lazy(() => import('~/pages/Canteen')),
+    preload: loadCanteenPage,
   },
   {
     path: '/information',
