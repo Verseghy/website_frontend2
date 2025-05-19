@@ -1,6 +1,6 @@
 import { RouteSectionProps, createAsync } from '@solidjs/router'
 import { Component, For, Show, VoidComponent } from 'solid-js'
-import { queryCanteen } from '~/data/canteen.data'
+import { queryCanteenPage } from '~/data/canteen.data'
 import { Day } from '~/models/canteen'
 import styles from './Canteen.module.scss'
 
@@ -47,7 +47,7 @@ const CanteenWeek: VoidComponent<CanteenWeekProps> = (props) => {
 }
 
 const CanteenPage: Component<RouteSectionProps> = () => {
-  const data = createAsync(() => queryCanteen())
+  const data = createAsync(() => queryCanteenPage())
 
   return (
     <>
