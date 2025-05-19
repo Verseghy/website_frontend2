@@ -13,7 +13,7 @@
     "lineEnding": "lf"
   },
   "linter": {
-    "enabled": false
+    "enabled": true
   },
   "organizeImports": {
     "enabled": true
