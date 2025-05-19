@@ -9,39 +9,36 @@
   },
   "type": "module",
   "devDependencies": {
-    "@eslint/js": "^9.10.0",
-    "@types/color": "^3.0.6",
-    "@types/dompurify": "^3.0.5",
-    "@types/eslint__js": "^8.42.3",
+    "@eslint/js": "^9.27.0",
+    "@types/color": "^4.2.0",
     "@types/jsdom": "^21.1.7",
-    "@types/node": "^22.5.5",
-    "@typescript-eslint/parser": "^8.5.0",
-    "esbuild": "^0.23.1",
-    "eslint": "^9.10.0",
-    "eslint-plugin-solid": "^0.14.3",
-    "postcss": "^8.4.47",
-    "sass": "^1.78.0",
-    "typescript": "5.6.2",
-    "typescript-eslint": "^8.6.0",
-    "vite": "^5.4.5"
+    "@types/node": "^22.15.19",
+    "@typescript-eslint/parser": "^8.32.1",
+    "esbuild": "^0.25.4",
+    "eslint": "^9.27.0",
+    "eslint-plugin-solid": "^0.14.5",
+    "postcss": "^8.5.3",
+    "sass-embedded": "^1.89.0",
+    "typescript": "5.8.3",
+    "typescript-eslint": "^8.32.1",
+    "vite": "^6.3.5"
   },
   "dependencies": {
-    "@biomejs/biome": "^1.9.1",
-    "@solid-primitives/graphql": "^2.0.4",
+    "@biomejs/biome": "^1.9.4",
+    "@solid-primitives/graphql": "^2.2.1",
     "@solidjs/meta": "^0.29.4",
-    "@solidjs/router": "^0.14.5",
-    "@solidjs/start": "1.0.6",
-    "color": "^4.2.3",
-    "date-fns": "^4.0.0",
-    "dompurify": "^3.1.6",
-    "jsdom": "^25.0.0",
+    "@solidjs/router": "^0.15.3",
+    "@solidjs/start": "1.1.4",
+    "color": "^5.0.0",
+    "date-fns": "^4.1.0",
+    "dompurify": "^3.2.5",
+    "jsdom": "^26.1.0",
     "modern-normalize": "^3.0.1",
     "solid-icons": "^1.1.0",
-    "solid-js": "^1.8.22",
-    "vinxi": "^0.4.3"
+    "solid-js": "^1.9.7",
+    "vinxi": "^0.5.6"
   },
   "engines": {
     "node": ">=18"
-  },
-  "packageManager": "pnpm@9.9.0+sha512.60c18acd138bff695d339be6ad13f7e936eea6745660d4cc4a776d5247c540d0edee1a563695c183a66eb917ef88f2b4feb1fc25f32a7adcadc7aaf3438e99c1"
+  }
 }

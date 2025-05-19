@@ -1,5 +1,5 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { RoutePreloadFunc, cache } from '@solidjs/router'
+import { RoutePreloadFunc, query } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import { MenuItem } from '~/models/information'
 
@@ -20,7 +20,7 @@ const QUERY_INFORMATION_MENU = gql`
   }
 `
 
-export const queryInformationMenu = cache(async (): Promise<MenuItem[]> => {
+export const queryInformationMenu = query(async (): Promise<MenuItem[]> => {
   type Response = {
     menu: MenuItem[]
   }
