@@ -13,10 +13,23 @@
     "lineEnding": "lf"
   },
   "linter": {
-    "enabled": true
+    "enabled": true,
+    "domains": {
+      "solid": "all"
+    },
+    "rules": {
+      "style": {
+        "noNonNullAssertion": "off",
+        "noEnum": "error"
+      }
+    }
   },
-  "organizeImports": {
-    "enabled": true
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
   },
   "javascript": {
     "formatter": {
