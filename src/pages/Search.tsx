@@ -5,23 +5,21 @@ import Title from '~/components/Title'
 import { querySearchPage } from '~/data/search.data'
 import styles from './Search.module.scss'
 
-// eslint-disable-next-line solid/no-destructure
-export const SearchPageRedirect: Component<RouteSectionProps> = ({ params }) => {
-  const pathToNavigate = `/search?${encodeURIComponent(params.type)}=${encodeURIComponent(params.value)}`
+export const SearchPageRedirect: Component<RouteSectionProps> = (props) => {
+  const pathToNavigate = `/search?${encodeURIComponent(props.params.type)}=${encodeURIComponent(props.params.value)}`
   return <Navigate href={pathToNavigate} />
 }
 
-// eslint-disable-next-line solid/no-destructure
-const SearchPage: Component<RouteSectionProps> = ({ location }) => {
-  const data = createAsync(() => querySearchPage(location.query))
+const SearchPage: Component<RouteSectionProps> = (props) => {
+  const data = createAsync(() => querySearchPage(props.location.query))
 
   return (
     <>
       <Title title="Keresés" />
 
       <div class={styles.container}>
-        <Show when={!!location.query.term}>
-          <h1 class={styles.title}>Találatok erre a kifejezésre: "{location.query.term}"</h1>
+        <Show when={!!props.location.query.term}>
+          <h1 class={styles.title}>Találatok erre a kifejezésre: "{props.location.query.term}"</h1>
         </Show>
         <Show when={data()}>
           <Show when={data()!.length > 0}>

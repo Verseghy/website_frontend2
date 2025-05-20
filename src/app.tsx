@@ -1,8 +1,8 @@
 // @refresh reload
 
 import { Meta, MetaProvider } from '@solidjs/meta'
-import { type RouteDefinition, Router } from '@solidjs/router'
 import 'modern-normalize/modern-normalize.css'
+import { type RouteDefinition, Router } from '@solidjs/router'
 import { ErrorBoundary, Suspense, lazy } from 'solid-js'
 import previewImage from '~/assets/preview_image.png'
 import Layout from '~/components/Layout'
@@ -20,7 +20,7 @@ const ROUTES: RouteDefinition[] = [
   {
     path: '/posts/:id',
     matchFilters: {
-      id: (id: string) => Number.isSafeInteger(parseInt(id)),
+      id: (id: string) => Number.isSafeInteger(Number.parseInt(id)),
     },
     component: lazy(() => import('~/pages/Post')),
     preload: loadPost,
@@ -39,6 +39,7 @@ const ROUTES: RouteDefinition[] = [
         preload: loadSearchPage,
       },
       {
+        // We need to keep this for backwards compatibility reasons
         path: '/:type/:value',
         component: lazy(() =>
           import('~/pages/Search').then((c) => ({
@@ -90,9 +91,10 @@ const ROUTES: RouteDefinition[] = [
   {
     path: '/*',
     component: () => {
-      const Error = lazy(() => import('~/pages/Error'))
+      const ErrorPage = lazy(() => import('~/pages/Error'))
+
       return (
-        <Error
+        <ErrorPage
           status={404}
           title="Az oldal nem található"
           link={{

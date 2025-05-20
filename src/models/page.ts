@@ -1,6 +1,4 @@
-export enum PageTemplate {
-  SERVICES = 'services',
-}
+export type PageTemplate = 'services' | 'page'
 
 export type Page = {
   id: number
@@ -8,6 +6,6 @@ export type Page = {
   name: string
   title: string
   content: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  extras: Record<string, any>
+  // biome-ignore lint/suspicious/noExplicitAny: this really can be any
+  extras: any
 }
