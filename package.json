@@ -4,7 +4,7 @@
     "dev": "vinxi dev",
     "build": "vinxi build",
     "start": "node ./.output/server/index.mjs",
-    "format": "biome format --write && biome check --formatter-enabled=false --linter-enabled=false",
+    "format": "biome format --write && biome check --formatter-enabled=false --linter-enabled=false --write",
     "biome": "biome",
     "lint": "biome lint"
   },

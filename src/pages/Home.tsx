@@ -1,5 +1,5 @@
 import { Meta } from '@solidjs/meta'
-import { type RouteSectionProps, createAsync } from '@solidjs/router'
+import { createAsync, type RouteSectionProps } from '@solidjs/router'
 import { type Component, Show } from 'solid-js'
 import Banners from '~/components/Banners'
 import CardGrid from '~/components/CardGrid'

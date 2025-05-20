@@ -1,4 +1,4 @@
-import { type RouteSectionProps, createAsync } from '@solidjs/router'
+import { createAsync, type RouteSectionProps } from '@solidjs/router'
 import { type Component, For, Show, type VoidComponent } from 'solid-js'
 import { queryCanteenPage } from '~/data/canteen.data'
 import type { Day } from '~/models/canteen'
