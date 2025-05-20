@@ -12,7 +12,7 @@ const InformationPage: Component<RouteSectionProps> = (props) => {
 
   const href = (data: MenuItem[]) => {
     for (const item of data) {
-      if (item.type == 'page_link') {
+      if (item.type === 'page_link') {
         return `${props.location.pathname}/${encodeURIComponent(item.slug)}`
       }
     }

@@ -12,7 +12,7 @@ const Layout: ParentComponent = (props) => {
 
   return (
     <>
-      <button onClick={skipNav} class={styles.skipToMain} aria-label="Navigáció átugrása">
+      <button type="button" onClick={skipNav} class={styles.skipToMain} aria-label="Navigáció átugrása">
         <span>Navigáció átugrása</span>
       </button>
       <div class={styles.layout}>

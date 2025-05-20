@@ -25,7 +25,10 @@ const MenuDropdown: ParentComponent<{ title: string }> = (props) => {
   return (
     <DropdownContext.Provider value={setLinks}>
       <li classList={{ [styles.open]: submenuOpen() }}>
+        {/* TODO: aria-expanded, aria-controls */}
         <div class={styles.submenu}>
+          {/* biome-ignore lint/a11y/useKeyWithClickEvents: this does not need to be interacted with keyboard, because if the submenu is focused using tabs, this will open automatically */}
+          {/* biome-ignore lint/a11y/noStaticElementInteractions: TODO: figure this out */}
           <span classList={{ [styles.active]: activeSubmenu() }} onClick={() => setSubmenuOpen((x) => !x)}>
             {props.title}
           </span>
@@ -55,7 +58,6 @@ const MenuItem: ParentComponent<{ href: string }> = (props) => {
   const setLinks = useContext(DropdownContext)
 
   if (setLinks !== undefined) {
-    // eslint-disable-next-line solid/reactivity
     setLinks((links) => [...links, props.href])
   }
 
@@ -81,12 +83,14 @@ const Search: VoidComponent<{ class: string }> = (props) => {
   }
 
   return (
-    <form onSubmit={onSearch} role="search" class={props.class}>
-      <label class="search">
-        <FaSolidMagnifyingGlass class={styles.icon} />
-        <input type="text" placeholder="Keresés" ref={inputRef!} />
-      </label>
-    </form>
+    <search class={props.class}>
+      <form onSubmit={onSearch}>
+        <label class="search">
+          <FaSolidMagnifyingGlass class={styles.icon} />
+          <input type="text" placeholder="Keresés" ref={inputRef!} />
+        </label>
+      </form>
+    </search>
   )
 }
 
@@ -101,7 +105,7 @@ const Header: VoidComponent = () => {
         </div>
         <div class={styles.drawer} classList={{ [styles.open]: drawerOpen() }}>
           <div class={styles.header}>
-            <button onClick={() => setDrawerOpen(false)}>
+            <button type="button" onClick={() => setDrawerOpen(false)}>
               <FaSolidXmark size="2rem" />
             </button>
           </div>
@@ -120,10 +124,12 @@ const Header: VoidComponent = () => {
           </ul>
           <Search class={styles.bottom} />
         </div>
-        <button class={styles.menuOpen} onClick={() => setDrawerOpen(true)}>
+        <button type="button" class={styles.menuOpen} onClick={() => setDrawerOpen(true)}>
           <FaSolidBars size="2rem" />
         </button>
       </nav>
+      {/* biome-ignore lint/a11y/useKeyWithClickEvents: this is not meant to be an interactive element for the keyboard, only a convenience for mouse users */}
+      {/* biome-ignore lint/a11y/noStaticElementInteractions: see above */}
       <div class={styles.backdrop} classList={{ [styles.open]: drawerOpen() }} onClick={() => setDrawerOpen(false)} />
     </header>
   )

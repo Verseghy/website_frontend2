@@ -28,7 +28,6 @@ export const queryPageByID = query(async (slug: string): Promise<Page> => {
   })
 
   if (response.page === null) {
-    // eslint-disable-next-line @typescript-eslint/only-throw-error
     throw redirect('/404')
   }
 

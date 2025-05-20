@@ -123,16 +123,20 @@ const queryLabel = async (labelID: number) => {
 export const querySearchPage = query(async (query: Params) => {
   if (query.term) {
     return await queryTerm(query.term)
-  } else if (query.author) {
-    const id = parseInt(query.author)
+  }
+
+  if (query.author) {
+    const id = Number.parseInt(query.author)
 
     if (!Number.isSafeInteger(id)) {
       return []
     }
 
     return await queryAuthor(id)
-  } else if (query.label) {
-    const id = parseInt(query.label)
+  }
+
+  if (query.label) {
+    const id = Number.parseInt(query.label)
 
     if (!Number.isSafeInteger(id)) {
       return []

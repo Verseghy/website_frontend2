@@ -10,15 +10,17 @@ export type InformationMenuProps = {
 export const InformationMenu: VoidComponent<InformationMenuProps> = (props) => {
   return (
     <aside class={styles.menu}>
-      <ul class={styles.dropdownContent} role="navigation">
-        <For each={props.menuItems}>
-          {(item) => (
-            <li>
-              <InformationMenuSection item={item} />
-            </li>
-          )}
-        </For>
-      </ul>
+      <nav>
+        <ul class={styles.dropdownContent}>
+          <For each={props.menuItems}>
+            {(item) => (
+              <li>
+                <InformationMenuSection item={item} />
+              </li>
+            )}
+          </For>
+        </ul>
+      </nav>
     </aside>
   )
 }

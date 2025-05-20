@@ -10,7 +10,6 @@ import Title from '~/components/Title'
 import { queryPostById } from '~/data/post.data'
 import styles from './Post.module.scss'
 
-// eslint-disable-next-line solid/no-destructure
 const PostPage: Component<RouteSectionProps> = ({ params }) => {
   const data = createAsync(() => queryPostById(params.id), {
     deferStream: true,

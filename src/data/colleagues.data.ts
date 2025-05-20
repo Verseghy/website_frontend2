@@ -50,7 +50,9 @@ export const queryColleaguesPage = query(async (): Promise<Category[]> => {
     colleagues.sort((a, b) => {
       if (a.name === HEAD_TEACHER) {
         return -1
-      } else if (b.name === HEAD_TEACHER) {
+      }
+
+      if (b.name === HEAD_TEACHER) {
         return 1
       }
 

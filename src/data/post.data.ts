@@ -43,7 +43,6 @@ export const queryPostById = query(async (id: string): Promise<Post> => {
   })
 
   if (response.post === null) {
-    // eslint-disable-next-line @typescript-eslint/only-throw-error
     throw redirect('/404')
   }
 

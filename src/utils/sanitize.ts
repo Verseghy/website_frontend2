@@ -30,7 +30,7 @@ function sanitize(purify: DOMPurifyI, parser: DOMParser, dirty: string): string 
 
   fixURLOrigin(dom)
 
-  purify.addHook('afterSanitizeAttributes', function (node) {
+  purify.addHook('afterSanitizeAttributes', (node) => {
     if (node.tagName === 'A') {
       node.setAttribute('target', '_blank')
       node.setAttribute('rel', 'noopener')

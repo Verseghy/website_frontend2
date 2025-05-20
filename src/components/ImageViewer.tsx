@@ -40,10 +40,10 @@ const ImageViewer: VoidComponent<ImageViewerProps> = (props) => {
   onMount(() => {
     observer = new IntersectionObserver(
       (entries) => {
-        entries = entries.filter((e) => e.isIntersecting)
+        const intersectingEntries = entries.filter((e) => e.isIntersecting)
 
-        if (entries.length > 0) {
-          const target = entries[0].target
+        if (intersectingEntries.length > 0) {
+          const target = intersectingEntries[0].target
           untrack(() => {
             setActiveIndex(elements.indexOf(target))
           })
@@ -64,55 +64,56 @@ const ImageViewer: VoidComponent<ImageViewerProps> = (props) => {
 
   createEffect(
     on([() => images()], () => {
-      elements.forEach((e) => observer.unobserve(e))
+      observer.disconnect()
       elements = Array.from(scroller!.querySelectorAll('figure'))
       elements.forEach((e) => observer.observe(e))
     })
   )
 
   return (
-    <div aria-label="Képek">
-      <div class={styles.viewer}>
-        <button
-          class={styles.left}
-          onClick={onClickLeft}
-          title="Előző kép"
-          aria-label="Előző kép"
-          disabled={activeIndex() == 0}
-        >
-          <FaSolidChevronLeft size="4rem" aria-hidden="true" />
-        </button>
-        <button
-          class={styles.right}
-          onClick={onClickRight}
-          title="Következő kép"
-          aria-label="Következő kép"
-          disabled={activeIndex() == images().length - 1}
-        >
-          <FaSolidChevronLeft size="4rem" aria-hidden="true" />
-        </button>
+    <section aria-label="Galéria" class={styles.viewer}>
+      <button
+        type="button"
+        class={styles.left}
+        onClick={onClickLeft}
+        title="Előző kép"
+        aria-label="Előző kép"
+        disabled={activeIndex() === 0}
+      >
+        <FaSolidChevronLeft size="4rem" aria-hidden="true" />
+      </button>
+      <button
+        type="button"
+        class={styles.right}
+        onClick={onClickRight}
+        title="Következő kép"
+        aria-label="Következő kép"
+        disabled={activeIndex() === images().length - 1}
+      >
+        <FaSolidChevronLeft size="4rem" aria-hidden="true" />
+      </button>
 
-        <div class={styles.scroller} role="group" aria-label="Képnézegető" aria-live="polite" ref={scroller}>
-          <For each={images()}>
-            {(image, index) => {
-              const label = () => `${index() + 1}/${images().length}`
+      {/* biome-ignore lint/a11y/useSemanticElements: it isn't appropriate to use a <fieldset> here */}
+      <div class={styles.scroller} role="group" aria-label="Képek" aria-live="polite" ref={scroller}>
+        <For each={images()}>
+          {(image, index) => {
+            const label = () => `${index() + 1}/${images().length}`
 
-              return (
-                <figure aria-label={label()} aria-roledescription="item" inert={index() != activeIndex()}>
-                  <img
-                    src={image}
-                    alt={label()}
-                    loading="lazy"
-                    fetchpriority={index() === 0 ? 'high' : 'low'}
-                    onError={onError}
-                  />
-                </figure>
-              )
-            }}
-          </For>
-        </div>
+            return (
+              <figure aria-label={label()} aria-roledescription="item" inert={index() !== activeIndex()}>
+                <img
+                  src={image}
+                  alt={label()}
+                  loading="lazy"
+                  fetchpriority={index() === 0 ? 'high' : 'low'}
+                  onError={onError}
+                />
+              </figure>
+            )
+          }}
+        </For>
       </div>
-    </div>
+    </section>
   )
 }
 
