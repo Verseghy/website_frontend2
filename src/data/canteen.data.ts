@@ -1,5 +1,5 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { type RoutePreloadFunc, query } from '@solidjs/router'
+import { query, type RoutePreloadFunc } from '@solidjs/router'
 import { addWeeks, getISOWeek, getISOWeekYear } from 'date-fns'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import type { Day } from '~/models/canteen'

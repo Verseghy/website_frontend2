@@ -1,4 +1,4 @@
-import { type RouteSectionProps, createAsync } from '@solidjs/router'
+import { createAsync, type RouteSectionProps } from '@solidjs/router'
 import { type Component, For, Show, type VoidComponent } from 'solid-js'
 import Title from '~/components/Title'
 import { queryColleaguesPage } from '~/data/colleagues.data'

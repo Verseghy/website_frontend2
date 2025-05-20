@@ -1,4 +1,4 @@
-import { Navigate, type RouteSectionProps, createAsync } from '@solidjs/router'
+import { createAsync, Navigate, type RouteSectionProps } from '@solidjs/router'
 import { type Component, Show } from 'solid-js'
 import { InformationMenu } from '~/components/InformationMenu'
 import PageRenderer from '~/components/PageRenderer'

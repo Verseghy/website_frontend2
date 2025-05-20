@@ -1,5 +1,5 @@
 import { Meta } from '@solidjs/meta'
-import { type RouteSectionProps, createAsync } from '@solidjs/router'
+import { createAsync, type RouteSectionProps } from '@solidjs/router'
 import { formatISO } from 'date-fns'
 import { type Component, For, Show } from 'solid-js'
 import FormattedDate from '~/components/FormattedDate'

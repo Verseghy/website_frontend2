@@ -1,5 +1,5 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { type RoutePreloadFunc, query, redirect } from '@solidjs/router'
+import { query, type RoutePreloadFunc, redirect } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import type { Post } from '~/models/post'
 
