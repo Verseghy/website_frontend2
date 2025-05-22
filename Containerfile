@@ -1,4 +1,4 @@
-FROM node:18-bookworm AS base
+FROM docker.io/library/node:22-bookworm AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
@@ -18,7 +18,7 @@ RUN pnpm run build
 
 
 
-FROM registry.access.redhat.com/ubi9/nodejs-18
+FROM registry.access.redhat.com/ubi9/nodejs-22-minimal
 COPY --from=build /app/.output /app
 EXPOSE 3000
 CMD [ "node", "/app/server/index.mjs" ]
