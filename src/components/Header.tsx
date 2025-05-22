@@ -71,7 +71,7 @@ const MenuItem: ParentComponent<{ href: string }> = (props) => {
 }
 
 const Search: VoidComponent<{ class: string }> = (props) => {
-  let inputRef: HTMLInputElement
+  let inputRef!: HTMLInputElement
   const navigate = useNavigate()
 
   const onSearch = (event: Event) => {

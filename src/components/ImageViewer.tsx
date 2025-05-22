@@ -45,7 +45,7 @@ const ImageViewer: VoidComponent<ImageViewerProps> = (props) => {
         if (intersectingEntries.length > 0) {
           const target = intersectingEntries[0].target
           untrack(() => {
-            setActiveIndex(elements.indexOf(target))
+            setActiveIndex(elements.indexOf(target as HTMLElement))
           })
         }
       },

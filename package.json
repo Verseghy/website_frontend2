@@ -6,7 +6,7 @@
     "start": "node ./.output/server/index.mjs",
     "format": "biome check --linter-enabled=false --write",
     "biome": "biome",
-    "lint": "biome lint"
+    "lint": "biome lint && tsc --noEmit --skipLibCheck"
   },
   "type": "module",
   "devDependencies": {

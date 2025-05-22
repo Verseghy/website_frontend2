@@ -23,7 +23,7 @@ const SearchPage: Component<RouteSectionProps> = (props) => {
         </Show>
         <Show when={data()}>
           <Show when={data()!.length > 0}>
-            <CardGrid posts={data()} />
+            <CardGrid posts={data()!} />
           </Show>
           <Show when={data()!.length === 0}>
             <p>Nincs találat!</p>

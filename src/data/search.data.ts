@@ -1,5 +1,5 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { type Params, query, type RoutePreloadFunc } from '@solidjs/router'
+import { query, type RoutePreloadFunc } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import type { Connection, PageInfo } from '~/models/connection'
 import type { Post } from '~/models/post'
@@ -66,12 +66,7 @@ const TERM_QUERY = gql`
 
 const queryTerm = async (term: string) => {
   type Response = {
-    search: {
-      edges: {
-        node: Post
-      }[]
-      pageInfo: PageInfo
-    }
+    search: Connection<Post, PageInfo>
   }
 
   const response = await request<Response>(GRAPHQL_BACKEND_URL, TERM_QUERY, {
@@ -86,12 +81,7 @@ const queryTerm = async (term: string) => {
 const queryAuthor = async (authorID: number) => {
   type Response = {
     author: {
-      posts: {
-        edges: {
-          node: Post
-        }[]
-        pageInfo: PageInfo
-      }
+      posts: Connection<Post, PageInfo>
     }
   }
 
@@ -104,10 +94,10 @@ const queryAuthor = async (authorID: number) => {
   return response.author.posts.edges.map((e) => e.node)
 }
 
-const queryLabel = async (labelID: number) => {
+const queryLabel = async (labelID: number): Promise<Post[]> => {
   type Response = {
     label: {
-      posts: Connection<PageInfo>
+      posts: Connection<Post, PageInfo>
     }
   }
 
@@ -120,13 +110,23 @@ const queryLabel = async (labelID: number) => {
   return response.label.posts.edges.map((e) => e.node)
 }
 
-export const querySearchPage = query(async (query: Params) => {
+const getFirst = (value: string | string[]): string => {
+  if (Array.isArray(value)) {
+    return value[0]
+  }
+  return value
+}
+
+// TODO: use SearchParams form @solidjs/router when v0.15.4 releases
+type SearchParams = Record<string, string | string[]>
+
+export const querySearchPage = query(async (query: SearchParams): Promise<Post[]> => {
   if (query.term) {
-    return await queryTerm(query.term)
+    return await queryTerm(getFirst(query.term))
   }
 
   if (query.author) {
-    const id = Number.parseInt(query.author)
+    const id = Number.parseInt(getFirst(query.author))
 
     if (!Number.isSafeInteger(id)) {
       return []
@@ -136,7 +136,7 @@ export const querySearchPage = query(async (query: Params) => {
   }
 
   if (query.label) {
-    const id = Number.parseInt(query.label)
+    const id = Number.parseInt(getFirst(query.label))
 
     if (!Number.isSafeInteger(id)) {
       return []
