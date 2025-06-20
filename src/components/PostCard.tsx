@@ -1,5 +1,4 @@
 import { A } from '@solidjs/router'
-import Color from 'color'
 import { For, Show, type VoidComponent } from 'solid-js'
 import type { Author, Post } from '~/models/post'
 import FormattedDate from './FormattedDate'
@@ -31,10 +30,9 @@ export type PostCardProps = {
 
 const PostCard: VoidComponent<PostCardProps> = (props) => {
   const link = () => `/posts/${props.post.id}`
-  const hue = () => Color(props.post.color).hue()
 
   return (
-    <article class={styles.card} style={{ '--hue': hue() }}>
+    <article class={styles.card} style={{ '--color': props.post.color }} aria-label={props.post.title}>
       <A href={link()} class={styles.imageLink}>
         <img class={styles.indexImg} src={props.post.indexImage} alt="" loading="lazy" />
       </A>
