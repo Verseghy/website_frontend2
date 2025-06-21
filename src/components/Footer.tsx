@@ -19,26 +19,26 @@ const Footer: VoidComponent = () => {
               <img class={styles.kkLogo} src={kk} alt="Szolnoki Tankerületi Központ logója" />
             </A>
           </div>
-          <div class={styles.block}>
+          <section class={styles.block}>
             <h4>Rólunk</h4>
             <span>5000 Szolnok, Tisza park 1.</span>
             <span>Telefon: 56/514-953; 20/540-4896</span>
             <a href="mailto: verseghygimnazium@gmail.com">E-mail: verseghygimnazium@gmail.com</a>
             <span>OM azonosító: 035992</span>
             <span>Honlap verzió: {VERSION}</span>
-          </div>
-          <div class={styles.block}>
+          </section>
+          <section class={styles.block}>
             <h4>Linkek</h4>
             <A href="/archive">Archívum</A>
-            <A href="." class={styles.disabled} tabIndex={-1}>
+            <A href="." class={styles.disabled} inert>
               Impresszum
             </A>
-            <A href="." class={styles.disabled} tabIndex={-1}>
+            <A href="." class={styles.disabled} inert>
               Oldaltérkép
             </A>
             <A href="/pages/akadalymentesitesi-nyilatkozat">Akadálymentesítési nyilatkozat</A>
-          </div>
-          <div class={styles.block}>
+          </section>
+          <section class={styles.block}>
             <h4>KRÉTA</h4>
             <A href="https://klik035992001.e-kreta.hu/Adminisztracio/Login" target="_blank" rel="noopener noreferrer">
               <img alt="" src={kreta} />
@@ -46,7 +46,7 @@ const Footer: VoidComponent = () => {
             <A href="https://eugyintezes.e-kreta.hu/" target="_blank" rel="noopener noreferrer">
               <img alt="" src={eugy} />
             </A>
-          </div>
+          </section>
         </div>
       </div>
       <div class={styles.bottom}>
