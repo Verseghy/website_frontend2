@@ -50,18 +50,16 @@ const CanteenPage: Component<RouteSectionProps> = () => {
   const data = createAsync(() => queryCanteenPage())
 
   return (
-    <>
-      <div class={styles.container}>
-        <h1>Menza étlap</h1>
+    <div class={styles.container}>
+      <h1>Menza étlap</h1>
 
-        <div class={styles.columns}>
-          <Show when={data()}>
-            <CanteenWeek title="Heti menü" days={data()![0]} />
-            <CanteenWeek title="Jövő heti menü" days={data()![1]} />
-          </Show>
-        </div>
+      <div class={styles.columns}>
+        <Show when={data()}>
+          <CanteenWeek title="Heti menü" days={data()![0]} />
+          <CanteenWeek title="Jövő heti menü" days={data()![1]} />
+        </Show>
       </div>
-    </>
+    </div>
   )
 }
 
