@@ -34,11 +34,11 @@ const QUERY_POSTS_FRAGMENT = gql`
 const QUERY_INITIAL = gql`
   ${QUERY_POSTS_FRAGMENT}
 
-  query Posts($last: Int, $numFeaturedPosts: Int) {
-    featuredPosts: posts(featured: true, last: $numFeaturedPosts) {
+  query Posts($first: Int, $numFeaturedPosts: Int) {
+    featuredPosts: posts(featured: true, first: $numFeaturedPosts) {
       ...PostsFragment,
     }
-    posts(last: $last) {
+    posts(first: $first) {
       ...PostsFragment,
       pageInfo {
         endCursor
@@ -61,7 +61,7 @@ export const queryHomePage = query(async (endCursor?: string): Promise<HomeData>
 
   const response = await request<Response>(GRAPHQL_BACKEND_URL, QUERY_INITIAL, {
     variables: {
-      last: NUM_POSTS_PER_PAGE,
+      first: NUM_POSTS_PER_PAGE,
       numFeaturedPosts: NUM_FEATURED_POSTS,
       before: endCursor ?? undefined,
     },
