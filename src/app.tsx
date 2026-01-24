@@ -20,7 +20,7 @@ const ROUTES: RouteDefinition[] = [
   {
     path: '/posts/:id',
     matchFilters: {
-      id: (id: string) => Number.isSafeInteger(Number.parseInt(id)),
+      id: (id: string) => Number.isSafeInteger(Number.parseInt(id, 10)),
     },
     component: lazy(() => import('~/pages/Post')),
     preload: loadPost,

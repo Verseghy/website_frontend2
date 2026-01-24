@@ -66,7 +66,9 @@ const ImageViewer: VoidComponent<ImageViewerProps> = (props) => {
     on([() => images()], () => {
       observer.disconnect()
       elements = Array.from(scroller!.querySelectorAll('figure'))
-      elements.forEach((e) => observer.observe(e))
+      elements.forEach((e) => {
+        observer.observe(e)
+      })
     })
   )
 

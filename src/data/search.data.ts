@@ -126,7 +126,7 @@ export const querySearchPage = query(async (query: SearchParams): Promise<Post[]
   }
 
   if (query.author) {
-    const id = Number.parseInt(getFirst(query.author))
+    const id = Number.parseInt(getFirst(query.author), 10)
 
     if (!Number.isSafeInteger(id)) {
       return []
@@ -136,7 +136,7 @@ export const querySearchPage = query(async (query: SearchParams): Promise<Post[]
   }
 
   if (query.label) {
-    const id = Number.parseInt(getFirst(query.label))
+    const id = Number.parseInt(getFirst(query.label), 10)
 
     if (!Number.isSafeInteger(id)) {
       return []
