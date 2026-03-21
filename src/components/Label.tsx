@@ -1,5 +1,4 @@
 import { A } from '@solidjs/router'
-import Color from 'color'
 import type { VoidComponent } from 'solid-js'
 import type { Label } from '~/models/post'
 import styles from './Label.module.scss'
@@ -12,11 +11,8 @@ const LabelComponent: VoidComponent<LabelProps> = (props) => {
   return (
     <A
       href={`/search?label=${encodeURIComponent(props.label.id)}`}
-      style={{ 'background-color': props.label.color }}
-      classList={{
-        [styles.label]: true,
-        [styles.dark]: Color(props.label.color).isDark(),
-      }}
+      style={{ '--color': props.label.color }}
+      class={styles.label}
     >
       {props.label.name}
     </A>
