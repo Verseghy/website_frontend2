@@ -55,8 +55,12 @@ const CanteenPage: Component<RouteSectionProps> = () => {
 
       <div class={styles.columns}>
         <Show when={data()}>
-          <CanteenWeek title="Heti menü" days={data()![0]} />
-          <CanteenWeek title="Jövő heti menü" days={data()![1]} />
+          {(data) => (
+            <>
+              <CanteenWeek title="Heti menü" days={data()[0]} />
+              <CanteenWeek title="Jövő heti menü" days={data()[1]} />
+            </>
+          )}
         </Show>
       </div>
     </div>

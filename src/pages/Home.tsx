@@ -11,13 +11,17 @@ const HomePage: Component<RouteSectionProps> = () => {
 
   return (
     <Show when={data()}>
-      <Meta name="twitter:card" content="summary" />
+      {(data) => (
+        <>
+          <Meta name="twitter:card" content="summary" />
 
-      <div class={styles.container}>
-        <p>Legfrissebb hírek</p>
-        <CardGrid posts={data()!.posts} />
-        <Banners />
-      </div>
+          <div class={styles.container}>
+            <p>Legfrissebb hírek</p>
+            <CardGrid posts={data().posts} />
+            <Banners />
+          </div>
+        </>
+      )}
     </Show>
   )
 }

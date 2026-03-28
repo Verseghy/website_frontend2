@@ -14,7 +14,7 @@ const PageRenderer: VoidComponent<PageRendererProps> = (props) => {
 
   return (
     <div class={styles.content}>
-      <Show when={!!props.title}>
+      <Show when={props.title}>
         <h1 class={styles.title}>{props.title}</h1>
       </Show>
       <div innerHTML={cleanHTML()} />

@@ -12,13 +12,17 @@ const PagesPage: Component<RouteSectionProps> = ({ params }) => {
   })
 
   return (
-    <Show when={!!data()}>
-      <Title title={data()!.title} />
-      <Meta property="og:title" content={data()!.title} />
+    <Show when={data()}>
+      {(data) => (
+        <>
+          <Title title={data().title} />
+          <Meta property="og:title" content={data().title} />
 
-      <div class={styles.container}>
-        <PageRenderer title={data()!.title} content={data()!.content} />
-      </div>
+          <div class={styles.container}>
+            <PageRenderer title={data().title} content={data().content} />
+          </div>
+        </>
+      )}
     </Show>
   )
 }

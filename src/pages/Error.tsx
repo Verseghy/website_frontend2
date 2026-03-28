@@ -21,13 +21,11 @@ const ErrorPage: VoidComponent<ErrorPageProps> = (props) => {
 
       <div class={styles.container}>
         <div class={styles.center}>
-          <Show when={!!props.status}>
+          <Show when={props.status}>
             <h1>{props.status}</h1>
           </Show>
           <h2>{props.title}</h2>
-          <Show when={!!props.link}>
-            <A href={props.link!.href}>{props.link!.name}</A>
-          </Show>
+          <Show when={props.link}>{(link) => <A href={link().href}>{link().name}</A>}</Show>
         </div>
       </div>
     </>

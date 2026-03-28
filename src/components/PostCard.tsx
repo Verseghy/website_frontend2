@@ -14,10 +14,14 @@ const CardAuthor: VoidComponent<CardAuthorProps> = (props) => {
   return (
     <div class={styles.bottom}>
       <Show when={props.author}>
-        <Show when={props.author!.image}>
-          <img class={styles.authorImg} src={props.author!.image!} alt={props.author!.name} />
-        </Show>
-        <span class={styles.authorName}>{props.author!.name}</span>
+        {(author) => (
+          <>
+            <Show when={author().image}>
+              <img class={styles.authorImg} src={author().image!} alt={author().name} />
+            </Show>
+            <span class={styles.authorName}>{author().name}</span>
+          </>
+        )}
       </Show>
       <FormattedDate date={props.date} />
     </div>
@@ -42,7 +46,7 @@ const PostCard: VoidComponent<PostCardProps> = (props) => {
       <A href={link()} class={styles.content} tabindex={-1}>
         <h2 class={styles.title}>{props.post.title}</h2>
         <p class={styles.description}>{props.post.description ?? ''}</p>
-        <CardAuthor date={new Date(props.post.date)} author={props.post.author!} />
+        <CardAuthor date={new Date(props.post.date)} author={props.post.author} />
       </A>
     </article>
   )
