@@ -1,5 +1,5 @@
 import { gql, request } from '@solid-primitives/graphql'
-import { query, type RoutePreloadFunc } from '@solidjs/router'
+import { query, type RoutePreloadFunc, type SearchParams } from '@solidjs/router'
 import { GRAPHQL_BACKEND_URL } from '~/constants'
 import type { Connection, PageInfo } from '~/models/connection'
 import type { Post } from '~/models/post'
@@ -116,9 +116,6 @@ const getFirst = (value: string | string[]): string => {
   }
   return value
 }
-
-// TODO: use SearchParams form @solidjs/router when v0.15.4 releases
-type SearchParams = Record<string, string | string[]>
 
 export const querySearchPage = query(async (query: SearchParams): Promise<Post[]> => {
   if (query.term) {

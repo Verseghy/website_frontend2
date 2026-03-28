@@ -10,7 +10,7 @@ import { queryPostById } from '~/data/post.data'
 import styles from './Post.module.scss'
 
 const PostPage: Component<RouteSectionProps> = ({ params }) => {
-  const data = createAsync(() => queryPostById(params.id), {
+  const data = createAsync(() => queryPostById(params.id!), {
     deferStream: true,
   })
 

@@ -50,5 +50,7 @@ export const queryPostById = query(async (id: string): Promise<Post> => {
 }, 'Post.queryPostById')
 
 export const loadPost: RoutePreloadFunc = ({ params }) => {
-  void queryPostById(params.id)
+  if (params.id) {
+    void queryPostById(params.id)
+  }
 }

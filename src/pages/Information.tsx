@@ -29,7 +29,7 @@ export default InformationPage
 
 export const InformationPageWithSlug: Component<RouteSectionProps> = (props) => {
   const menu = createAsync(() => queryInformationMenu())
-  const page = createAsync(() => queryPageByID(props.params.slug))
+  const page = createAsync(() => queryPageByID(props.params.slug!))
 
   return (
     <div class={styles.container}>

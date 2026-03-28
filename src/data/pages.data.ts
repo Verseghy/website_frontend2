@@ -35,5 +35,7 @@ export const queryPageByID = query(async (slug: string): Promise<Page> => {
 }, 'Pages.queryPageByID')
 
 export const loadPage: RoutePreloadFunc = ({ params }) => {
-  void queryPageByID(params.slug)
+  if (params.slug) {
+    void queryPageByID(params.slug)
+  }
 }

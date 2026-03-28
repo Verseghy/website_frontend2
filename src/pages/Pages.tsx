@@ -7,7 +7,7 @@ import { queryPageByID } from '~/data/pages.data'
 import styles from './Pages.module.scss'
 
 const PagesPage: Component<RouteSectionProps> = ({ params }) => {
-  const data = createAsync(() => queryPageByID(params.slug), {
+  const data = createAsync(() => queryPageByID(params.slug!), {
     deferStream: true,
   })
 
