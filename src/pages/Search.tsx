@@ -6,7 +6,10 @@ import { querySearchPage } from '~/data/search.data'
 import styles from './Search.module.scss'
 
 export const SearchPageRedirect: Component<RouteSectionProps> = (props) => {
-  const pathToNavigate = `/search?${encodeURIComponent(props.params.type)}=${encodeURIComponent(props.params.value)}`
+  const params = new URLSearchParams()
+  params.set(props.params.type!, props.params.value!)
+
+  const pathToNavigate = `/search?${params.toString()}`
   return <Navigate href={pathToNavigate} />
 }
 
