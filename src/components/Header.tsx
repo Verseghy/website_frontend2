@@ -2,8 +2,10 @@ import { A, useLocation, useNavigate } from '@solidjs/router'
 import { FaSolidBars, FaSolidChevronDown, FaSolidMagnifyingGlass, FaSolidXmark } from 'solid-icons/fa'
 import {
   createContext,
+  createEffect,
   createMemo,
   createSignal,
+  onMount,
   type ParentComponent,
   type Setter,
   useContext,
@@ -54,7 +56,7 @@ const MenuItemKreta: VoidComponent = () => {
   )
 }
 
-const MenuItem: ParentComponent<{ href: string }> = (props) => {
+const MenuItem: ParentComponent<{ href: string; end?: boolean }> = (props) => {
   const setLinks = useContext(DropdownContext)
 
   if (setLinks !== undefined) {
@@ -95,39 +97,66 @@ const Search: VoidComponent<{ class: string }> = (props) => {
 }
 
 const Header: VoidComponent = () => {
+  const location = useLocation()
+
   const [drawerOpen, setDrawerOpen] = createSignal(false)
+  const [bigHeader, setBigHeader] = createSignal(location.pathname === '/')
+
+  const checkBigHeader = () => {
+    console.log('check', location.pathname /*window.scrollY*/)
+    if (location.pathname !== '/') {
+      console.log(false)
+      setBigHeader(false)
+      return
+    }
+
+    if (typeof window === 'undefined') {
+      setBigHeader(true)
+      return
+    }
+
+    setBigHeader(scrollY <= 64)
+  }
+
+  onMount(() => {
+    document.addEventListener('scroll', checkBigHeader, { passive: true })
+  })
+
+  createEffect(() => {
+    checkBigHeader()
+  })
 
   return (
-    <header class={styles.header}>
-      <nav>
-        <div>
-          <Logo />
-        </div>
-        <div class={styles.drawer} classList={{ [styles.open]: drawerOpen() }}>
-          <div class={styles.header}>
-            <button type="button" onClick={() => setDrawerOpen(false)}>
-              <FaSolidXmark size="2rem" />
-            </button>
+    <header classList={{ [styles.header]: true, [styles.big]: bigHeader() }}>
+      <div class={styles.container}>
+        <Logo big={bigHeader()} />
+        <nav>
+          <div class={styles.drawer} classList={{ [styles.open]: drawerOpen() }}>
+            <div class={styles.drawerHeader}>
+              <button type="button" onClick={() => setDrawerOpen(false)}>
+                <FaSolidXmark size="2rem" />
+              </button>
+            </div>
+            <Search class={styles.top} />
+            <ul class={styles.mainMenu}>
+              <MenuItem href="/">Főoldal</MenuItem>
+              <MenuItem href="/information">Információk</MenuItem>
+              <MenuDropdown title="Menza">
+                <MenuItem href="/canteen">Étlap</MenuItem>
+                <MenuItem href="/pages/menza-tajekoztatok-nyilatkozatok">Tájékoztatók, Nyilatkozatok</MenuItem>
+                <MenuItem href="/pages/menza-ugyintezes-etkezes-lemondas">Ügyinténzés, étkezés lemondása</MenuItem>
+              </MenuDropdown>
+              <MenuItem href="/events">Események</MenuItem>
+              <MenuItem href="/information/beiskolazas">Beiskolázás</MenuItem>
+              <MenuItemKreta />
+            </ul>
+            <Search class={styles.bottom} />
           </div>
-          <Search class={styles.top} />
-          <ul class={styles.mainMenu}>
-            <MenuItem href="/">Főoldal</MenuItem>
-            <MenuItem href="/information">Információk</MenuItem>
-            <MenuDropdown title="Menza">
-              <MenuItem href="/canteen">Étlap</MenuItem>
-              <MenuItem href="/pages/menza-tajekoztatok-nyilatkozatok">Tájékoztatók, Nyilatkozatok</MenuItem>
-              <MenuItem href="/pages/menza-ugyintezes-etkezes-lemondas">Ügyinténzés, étkezés lemondása</MenuItem>
-            </MenuDropdown>
-            <MenuItem href="/events">Események</MenuItem>
-            <MenuItem href="/information/beiskolazas">Beiskolázás</MenuItem>
-            <MenuItemKreta />
-          </ul>
-          <Search class={styles.bottom} />
-        </div>
-        <button type="button" class={styles.menuOpen} onClick={() => setDrawerOpen(true)}>
-          <FaSolidBars size="2rem" />
-        </button>
-      </nav>
+          <button type="button" class={styles.menuOpen} onClick={() => setDrawerOpen(true)}>
+            <FaSolidBars size="2rem" />
+          </button>
+        </nav>
+      </div>
       {/* biome-ignore lint/a11y/useKeyWithClickEvents: this is not meant to be an interactive element for the keyboard, only a convenience for mouse users */}
       {/* biome-ignore lint/a11y/noStaticElementInteractions: see above */}
       <div class={styles.backdrop} classList={{ [styles.open]: drawerOpen() }} onClick={() => setDrawerOpen(false)} />

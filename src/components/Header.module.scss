@@ -4,20 +4,40 @@
   position: fixed;
   inset: 0 0 auto;
   z-index: 10;
+  height: 5.6rem;
+  transition: height 300ms ease-in-out;
+
+  @include lg {
+    height: 6.4rem;
+
+    &.big {
+      height: 12.8rem;
+    }
+  }
+
 
   nav {
     height: 5.6rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: min(var(--page-width), calc(100% - 2 * var(--page-padding)));
-    margin-inline: auto;
     position: relative;
 
     @include lg {
       height: 6.4rem;
+      position: absolute;
+      bottom: 0;
+      right: 0;
     }
   }
+}
+
+.container {
+  justify-content: space-between;
+  width: min(var(--page-width), calc(100% - 2 * var(--page-padding)));
+  margin-inline: auto;
+  display: flex;
+  position: relative;
+  height: 100%;
 }
 
 .drawer {
@@ -44,7 +64,7 @@
     transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
   }
 
-  .header {
+  .drawer-header {
     height: 5.6rem;
     border-bottom: 0.1rem inset #f3f3f3;
 
@@ -83,10 +103,10 @@
     background: var(--header-search-background);
     border-radius: 0.3rem;
     margin: 0.4rem;
-    margin-right: 0;
 
     @include lg {
       --height: 4rem;
+      margin-right: 0;
     }
 
     &:focus-within {
