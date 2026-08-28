@@ -43,6 +43,7 @@ export const queryColleaguesPage = query(async (): Promise<Category[]> => {
   const colleagues = Object.groupBy(response.colleagues, ({ category }) => category)
 
   const categories = []
+  const collator = new Intl.Collator('hu')
 
   for (const [key, value] of Object.entries(colleagues)) {
     const colleagues = value ?? []
@@ -56,7 +57,10 @@ export const queryColleaguesPage = query(async (): Promise<Category[]> => {
         return 1
       }
 
-      return a.name > b.name ? 1 : -1
+      const aNameWithoutPrefix = a.name.startsWith('Dr. ') ? a.name.slice(4) : a.name
+      const bNameWithoutPrefix = b.name.startsWith('Dr. ') ? b.name.slice(4) : b.name
+
+      return collator.compare(aNameWithoutPrefix, bNameWithoutPrefix)
     })
 
     categories.push({
