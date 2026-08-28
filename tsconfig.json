@@ -5,7 +5,7 @@
     "moduleResolution": "bundler",
     "jsxImportSource": "solid-js",
     "jsx": "preserve",
-    "types": ["vinxi/types/client", "vite/client"],
+    "types": ["@solidjs/start/env"],
     "paths": {
       "~/*": ["./src/*"]
     }
