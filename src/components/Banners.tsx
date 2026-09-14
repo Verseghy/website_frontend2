@@ -16,7 +16,7 @@ const Banners: VoidComponent = () => {
           <img src={ntp} alt="Nemzeti Tehetség Program" height="160" />
         </A>
         <A href="/pages/bazisintezmeny">
-          <img src={bazis} alt="Oktatási Hivatal Bázisintézménye" />
+          <img src={bazis} alt="Oktatási Hivatal Bázisintézménye" height="136" />
         </A>
       </div>
     </div>
